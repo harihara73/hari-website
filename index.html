@@ -1,780 +1,1226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SaiWebStudio | Web Developer for Clinics & Pharmacies — Kakinada</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hariharasai — Web Developer</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070f;
+            --violet: #7c3aed;
+            --indigo: #4f46e5;
+            --cyan: #06b6d4;
+            --pink: #ec4899;
+            --emerald: #10b981;
+            --text: #f1f5f9;
+            --muted: #64748b;
+            --card: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.07);
+        }
 
-<!-- Basic SEO -->
-<meta name="description" content="SaiWebStudio — Professional Web Developer specializing in Clinic & Pharmacy websites. Based in Kakinada, India. Helping Businesses Go Digital.">
-<meta name="keywords" content="SaiWebStudio, web developer Kakinada, clinic website design, pharmacy website, web development India, freelance web developer, business website Kakinada, saiwebstudio.com">
-<meta name="author" content="Hariharasai Pulla — SaiWebStudio">
-<meta name="robots" content="index, follow">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Canonical -->
-<link rel="canonical" href="https://saiwebstudio.com">
+        html {
+            scroll-behavior: smooth;
+        }
 
-<!-- Open Graph -->
-<meta property="og:title" content="SaiWebStudio | Web Developer for Clinics & Pharmacies">
-<meta property="og:description" content="I build high-converting websites for clinics, pharmacies & businesses. Helping Businesses Go Digital.">
-<meta property="og:url" content="https://saiwebstudio.com">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://saiwebstudio.com/preview.png">
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: none;
+        }
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SaiWebStudio | Web Developer for Clinics & Pharmacies">
-<meta name="twitter:description" content="I build high-converting websites for clinics, pharmacies & businesses.">
+        /* CUSTOM CURSOR */
+        .cursor {
+            width: 12px;
+            height: 12px;
+            background: var(--cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+            mix-blend-mode: screen;
+        }
 
-<!-- Google Search Console (replace with your real verify code after deploying) -->
-<!-- <meta name="google-site-verification" content="YOUR_CODE_HERE"> -->
+        .cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid rgba(6, 182, 212, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: all 0.15s ease;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #05070f;
-  --violet: #7c3aed;
-  --indigo: #4f46e5;
-  --cyan: #06b6d4;
-  --pink: #ec4899;
-  --emerald: #10b981;
-  --text: #f1f5f9;
-  --muted: #64748b;
-  --card: rgba(255,255,255,0.04);
-  --border: rgba(255,255,255,0.07);
-}
+        /* ANIMATED BACKGROUND */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: orbFloat 12s ease-in-out infinite;
+        }
 
-body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  cursor: none;
-}
+        .orb1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #7c3aed, transparent);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
 
-/* CUSTOM CURSOR */
-.cursor {
-  width: 12px; height: 12px;
-  background: var(--cyan);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: width 0.2s, height 0.2s;
-  mix-blend-mode: screen;
-  left: -100px; top: -100px;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(6,182,212,0.5);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: width 0.2s, height 0.2s;
-  left: -100px; top: -100px;
-}
+        .orb2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #06b6d4, transparent);
+            top: 30%;
+            right: -80px;
+            animation-delay: -4s;
+        }
 
-/* ANIMATED BACKGROUND */
-.bg-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.35;
-  animation: orbFloat 12s ease-in-out infinite;
-}
-.orb1 { width:500px;height:500px;background:radial-gradient(circle,#7c3aed,transparent);top:-100px;left:-100px;animation-delay:0s; }
-.orb2 { width:400px;height:400px;background:radial-gradient(circle,#06b6d4,transparent);top:30%;right:-80px;animation-delay:-4s; }
-.orb3 { width:350px;height:350px;background:radial-gradient(circle,#ec4899,transparent);bottom:10%;left:20%;animation-delay:-8s; }
-.orb4 { width:300px;height:300px;background:radial-gradient(circle,#4f46e5,transparent);bottom:-50px;right:30%;animation-delay:-2s; }
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #ec4899, transparent);
+            bottom: 10%;
+            left: 20%;
+            animation-delay: -8s;
+        }
 
-@keyframes orbFloat {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(30px,-40px) scale(1.08); }
-  66% { transform: translate(-20px,30px) scale(0.95); }
-}
+        .orb4 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #4f46e5, transparent);
+            bottom: -50px;
+            right: 30%;
+            animation-delay: -2s;
+        }
 
-/* GRID OVERLAY */
-.grid-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
+        @keyframes orbFloat {
 
-/* NOISE */
-.noise {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
 
-/* HEADER */
-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 18px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(5,7,15,0.7);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
-}
-.logo {
-  font-family: 'Clash Display', sans-serif;
-  font-weight: 700;
-  font-size: 1.3rem;
-  letter-spacing: -0.02em;
-  text-decoration: none;
-  color: var(--text);
-}
-.logo span {
-  background: linear-gradient(135deg, var(--cyan), var(--violet));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-nav { display:flex; gap:32px; align-items:center; }
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  transition: color 0.2s;
-}
-nav a:hover { color: var(--text); }
-.nav-cta {
-  background: linear-gradient(135deg, var(--violet), var(--cyan));
-  color: #fff !important;
-  padding: 9px 22px;
-  border-radius: 8px;
-  font-weight: 600 !important;
-  font-size: 0.85rem !important;
-}
-.nav-cta:hover { opacity: 0.9; }
+            33% {
+                transform: translate(30px, -40px) scale(1.08);
+            }
 
-/* MAIN */
-main { position: relative; z-index: 1; }
+            66% {
+                transform: translate(-20px, 30px) scale(0.95);
+            }
+        }
 
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 120px 50px 80px;
-  position: relative;
-  text-align: center;
-}
-.hero-inner {
-  max-width: 780px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+        /* GRID OVERLAY */
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-  background: rgba(6,182,212,0.1);
-  border: 1px solid rgba(6,182,212,0.25);
-  color: var(--cyan);
-  animation: fadeUp 0.5s ease both;
-}
-.badge-dot {
-  width: 6px; height: 6px;
-  background: var(--cyan);
-  border-radius: 50%;
-  animation: blink 2s infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        /* NOISE */
+        .noise {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
 
-.hero h1 {
-  font-family: 'Clash Display', sans-serif;
-  font-size: clamp(3rem, 6.5vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-  animation: fadeUp 0.5s 0.1s ease both;
-}
-.grad-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #7c3aed 50%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: gradShift 4s ease infinite;
-}
-@keyframes gradShift {
-  0%,100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 7, 15, 0.7);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
 
-.hero p {
-  font-size: 1.15rem;
-  color: var(--muted);
-  max-width: 540px;
-  line-height: 1.7;
-  font-weight: 300;
-  margin-bottom: 42px;
-  text-align: center;
-  animation: fadeUp 0.5s 0.2s ease both;
-}
+        .logo {
+            font-family: 'Clash Display', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--text);
+        }
 
-.hero-btns {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  justify-content: center;
-  animation: fadeUp 0.5s 0.3s ease both;
-}
+        .logo span {
+            background: linear-gradient(135deg, var(--cyan), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.btn-glow {
-  background: linear-gradient(135deg, var(--violet), var(--cyan));
-  color: #fff;
-  padding: 14px 32px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 30px rgba(124,58,237,0.3);
-}
-.btn-glow:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(124,58,237,0.5); }
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
 
-.btn-outline {
-  background: transparent;
-  color: var(--text);
-  padding: 14px 32px;
-  border-radius: 10px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-decoration: none;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s, background 0.2s;
-}
-.btn-outline:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            transition: color 0.2s;
+        }
 
-/* ONE-CLICK QUICK CONTACT */
-.quick-contact {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  animation: fadeUp 0.5s 0.4s ease both;
-}
-.qbtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.qbtn-wa {
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-}
-.qbtn-wa:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
-.qbtn-mail {
-  background: linear-gradient(135deg, var(--indigo), var(--violet));
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(79,70,229,0.3);
-}
-.qbtn-mail:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(79,70,229,0.5); }
+        nav a:hover {
+            color: var(--text);
+        }
 
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  margin-top: 60px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border);
-  flex-wrap: wrap;
-  justify-content: center;
-  animation: fadeUp 0.5s 0.5s ease both;
-}
-.stat-val {
-  font-family: 'Clash Display', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 700;
-  display: block;
-  background: linear-gradient(135deg, var(--cyan), var(--violet));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.stat-lbl {
-  font-size: 1rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-weight: 500;
-}
+        .nav-cta {
+            background: linear-gradient(135deg, var(--violet), var(--cyan));
+            color: #fff !important;
+            padding: 9px 22px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            transition: opacity 0.2s, transform 0.2s !important;
+        }
 
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(28px); }
-  to { opacity:1; transform:translateY(0); }
-}
+        .nav-cta:hover {
+            opacity: 0.9;
+            transform: translateY(-1px) !important;
+        }
 
-/* SECTIONS */
-section { padding: 90px 50px; position: relative; z-index: 1; }
-.sec-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  background: linear-gradient(90deg, var(--cyan), var(--violet));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.sec-title {
-  font-family: 'Clash Display', sans-serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin-bottom: 12px;
-}
-.sec-sub {
-  color: var(--muted);
-  font-weight: 300;
-  font-size: 1rem;
-  margin-bottom: 56px;
-}
+        /* MAIN CONTENT */
+        main {
+            position: relative;
+            z-index: 1;
+        }
 
-/* SERVICES */
-#services { background: linear-gradient(180deg, transparent, rgba(124,58,237,0.04), transparent); }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.s-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 28px;
-  transition: all 0.35s;
-  position: relative;
-  overflow: hidden;
-}
-.s-card:hover { transform: translateY(-8px); border-color: rgba(124,58,237,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-.s-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-.s-card h3 { font-family: 'Clash Display', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
-.s-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; font-weight: 300; }
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 50px 80px;
+            position: relative;
+            text-align: center;
+        }
 
-/* PROJECTS */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.p-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-  transition: all 0.35s;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-.p-card:hover { transform: translateY(-8px); box-shadow: 0 24px 70px rgba(0,0,0,0.5); border-color: rgba(6,182,212,0.25); }
-.p-card.featured { border-color: rgba(124,58,237,0.4); }
-.p-img-wrap {
-  height: 190px;
-  overflow: hidden;
-  position: relative;
-  background: rgba(255,255,255,0.03);
-}
-.p-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
-.p-card:hover .p-img-wrap img { transform: scale(1.06); }
-.p-tag {
-  position: absolute;
-  top: 12px; left: 12px;
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: rgba(124,58,237,0.2);
-  border: 1px solid rgba(124,58,237,0.35);
-  color: #a78bfa;
-}
-.live-dot {
-  position: absolute;
-  top: 12px; right: 12px;
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  background: rgba(16,185,129,0.15);
-  border: 1px solid rgba(16,185,129,0.3);
-  color: #34d399;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.live-dot::before { content:''; width:5px; height:5px; background:#34d399; border-radius:50%; animation:blink 1.5s infinite; }
-.p-body { padding: 22px; }
-.p-body h3 { font-family: 'Clash Display', sans-serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
-.p-body p { color: var(--muted); font-size: 0.86rem; line-height: 1.6; font-weight: 300; }
-.p-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 0.82rem; font-weight: 600; color: var(--cyan); text-decoration: none; }
+        .hero-inner {
+            max-width: 780px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* CONTACT */
-#contact { background: linear-gradient(180deg, transparent, rgba(79,70,229,0.05), transparent); }
-.contact-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-}
-.contact-left h3 { font-family: 'Clash Display', sans-serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 12px; }
-.contact-left p { color: var(--muted); font-size: 0.95rem; font-weight: 300; line-height: 1.7; margin-bottom: 32px; }
-.contact-cards { display: flex; flex-direction: column; gap: 14px; }
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 22px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s;
-  position: relative;
-}
-.contact-card::after { content: '↗'; position: absolute; right: 20px; font-size: 1.1rem; color: var(--muted); transition: all 0.2s; }
-.contact-card:hover::after { color: var(--text); transform: translate(2px,-2px); }
-.contact-card.wa:hover { background: rgba(37,211,102,0.07); border-color: rgba(37,211,102,0.35); transform: translateX(4px); box-shadow: 0 8px 30px rgba(37,211,102,0.1); }
-.contact-card.email:hover { background: rgba(124,58,237,0.07); border-color: rgba(124,58,237,0.35); transform: translateX(4px); box-shadow: 0 8px 30px rgba(124,58,237,0.1); }
-.cc-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
-.wa .cc-icon { background: rgba(37,211,102,0.12); }
-.email .cc-icon { background: rgba(124,58,237,0.12); }
-.cc-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px; }
-.cc-value { font-size: 0.95rem; font-weight: 500; }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            color: var(--cyan);
+            animation: fadeUp 0.5s ease both;
+        }
 
-/* FORM */
-.contact-form { display: flex; flex-direction: column; gap: 16px; }
-.f-group { display: flex; flex-direction: column; gap: 6px; }
-.f-label { font-size: 0.74rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
-.f-group input, .f-group textarea {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  color: var(--text);
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  outline: none;
-  resize: none;
-  transition: border-color 0.25s, box-shadow 0.25s;
-}
-.f-group input:focus, .f-group textarea:focus { border-color: rgba(124,58,237,0.5); box-shadow: 0 0 0 3px rgba(124,58,237,0.1); }
-.f-group textarea { height: 130px; }
-.btn-submit {
-  background: linear-gradient(135deg, var(--violet), var(--cyan));
-  color: #fff;
-  padding: 14px 32px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s;
-  font-family: 'Outfit', sans-serif;
-  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
-}
-.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,58,237,0.5); }
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--cyan);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
 
-/* FLOATING WHATSAPP */
-.wa-float {
-  position: fixed;
-  bottom: 28px; right: 28px;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: #fff;
-  width: 58px; height: 58px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  text-decoration: none;
-  z-index: 999;
-  box-shadow: 0 4px 24px rgba(37,211,102,0.45);
-  transition: transform 0.2s, box-shadow 0.2s;
-  animation: floatBob 3s ease-in-out infinite;
-}
-.wa-float:hover { transform: scale(1.12) !important; animation: none; }
-@keyframes floatBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+        @keyframes blink {
 
-/* FOOTER */
-footer {
-  position: relative;
-  z-index: 1;
-  padding: 28px 50px;
-  background: rgba(5,7,15,0.9);
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-footer p { color: var(--muted); font-size: 0.85rem; }
-.footer-tag {
-  font-size: 0.85rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--cyan), var(--violet));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+            0%,
+            100% {
+                opacity: 1
+            }
 
-/* RESPONSIVE */
-@media(max-width: 960px) {
-  header { padding: 16px 24px; }
-  section { padding: 70px 24px; }
-  .hero { padding: 100px 24px 60px; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .projects-grid { grid-template-columns: 1fr 1fr; }
-  .contact-wrap { grid-template-columns: 1fr; }
-  footer { padding: 24px; }
-}
-@media(max-width: 600px) {
-  .services-grid { grid-template-columns: 1fr; }
-  .projects-grid { grid-template-columns: 1fr; }
-  nav .nav-cta { display: none; }
-  .hero-stats { gap: 24px; }
-}
-</style>
+            50% {
+                opacity: 0.3
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(3rem, 6.5vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            animation: fadeUp 0.5s 0.1s ease both;
+        }
+
+        .grad-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #7c3aed 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradShift 4s ease infinite;
+        }
+
+        @keyframes gradShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 540px;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 42px;
+            animation: fadeUp 0.5s 0.2s ease both;
+            text-align: center;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeUp 0.5s 0.3s ease both;
+        }
+
+        .btn-glow {
+            background: linear-gradient(135deg, var(--violet), var(--cyan));
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.5);
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--cyan), var(--violet));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-glow:hover::before {
+            opacity: 1;
+        }
+
+        .btn-glow span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /* ONE-CLICK CONTACT BUTTONS */
+        .quick-contact {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeUp 0.5s 0.4s ease both;
+        }
+
+        .qbtn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: none;
+        }
+
+        .qbtn-wa {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .qbtn-wa:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .qbtn-mail {
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .qbtn-mail:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(79, 70, 229, 0.5);
+        }
+
+        .qbtn-icon {
+            font-size: 1rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeUp 0.5s 0.5s ease both;
+        }
+
+        .stat-item {}
+
+        .stat-val {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            display: block;
+            background: linear-gradient(135deg, var(--cyan), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-lbl {
+            font-size: 1rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-weight: 500;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sec-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--cyan), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sec-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 12px;
+        }
+
+        .sec-sub {
+            color: var(--muted);
+            font-weight: 300;
+            font-size: 1rem;
+            margin-bottom: 56px;
+        }
+
+        /* SERVICES */
+        #services {
+            background: linear-gradient(180deg, transparent, rgba(124, 58, 237, 0.04), transparent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .s-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: all 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .s-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.06), rgba(124, 58, 237, 0.06));
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .s-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .s-card:hover::before {
+            opacity: 1;
+        }
+
+        .s-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+            position: relative;
+        }
+
+        .s-card h3 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .s-card p {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.65;
+            font-weight: 300;
+            position: relative;
+        }
+
+        /* PROJECTS */
+        #projects {}
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .p-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.35s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        .p-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+            border-color: rgba(6, 182, 212, 0.25);
+        }
+
+        .p-card.featured {
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.15);
+        }
+
+        .p-img-wrap {
+            height: 190px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .p-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+            display: block;
+        }
+
+        .p-card:hover .p-img-wrap img {
+            transform: scale(1.06);
+        }
+
+        .p-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.35);
+            color: #a78bfa;
+        }
+
+        .live-dot {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .live-dot::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: #34d399;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        .p-body {
+            padding: 22px;
+        }
+
+        .p-body h3 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .p-body p {
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .p-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--cyan);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .p-link:hover {
+            gap: 10px;
+        }
+
+        /* CONTACT SECTION */
+        #contact {
+            background: linear-gradient(180deg, transparent, rgba(79, 70, 229, 0.05), transparent);
+        }
+
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-left h3 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact-left p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        /* ONE-CLICK CONTACT CARDS */
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 22px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::after {
+            content: '↗';
+            position: absolute;
+            right: 20px;
+            font-size: 1.1rem;
+            color: var(--muted);
+            transition: all 0.2s;
+        }
+
+        .contact-card:hover::after {
+            color: var(--text);
+            transform: translate(2px, -2px);
+        }
+
+        .contact-card.wa {
+            border-color: rgba(37, 211, 102, 0.15);
+        }
+
+        .contact-card.wa:hover {
+            background: rgba(37, 211, 102, 0.07);
+            border-color: rgba(37, 211, 102, 0.35);
+            transform: translateX(4px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.1);
+        }
+
+        .contact-card.email {
+            border-color: rgba(124, 58, 237, 0.15);
+        }
+
+        .contact-card.email:hover {
+            background: rgba(124, 58, 237, 0.07);
+            border-color: rgba(124, 58, 237, 0.35);
+            transform: translateX(4px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.1);
+        }
+
+        .cc-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .wa .cc-icon {
+            background: rgba(37, 211, 102, 0.12);
+        }
+
+        .email .cc-icon {
+            background: rgba(124, 58, 237, 0.12);
+        }
+
+        .cc-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 2px;
+        }
+
+        .cc-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* FORM */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .f-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .f-label {
+            font-size: 0.74rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .f-group input,
+        .f-group textarea {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            outline: none;
+            resize: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .f-group input:focus,
+        .f-group textarea:focus {
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+
+        .f-group textarea {
+            height: 130px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--violet), var(--cyan));
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: none;
+            transition: all 0.25s;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.5);
+        }
+
+        /* FLOATING WHATSAPP */
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: floatBob 3s ease-in-out infinite;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.12);
+            box-shadow: 0 8px 36px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        @keyframes floatBob {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 28px 50px;
+            background: rgba(5, 7, 15, 0.9);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--cyan), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 960px) {
+            header {
+                padding: 16px 24px;
+            }
+
+            section {
+                padding: 70px 24px;
+            }
+
+            .hero {
+                padding: 100px 24px 60px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 24px;
+            }
+        }
+
+        @media(max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav .nav-cta {
+                display: none;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- BACKGROUND -->
-<div class="bg-canvas">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
-  <div class="orb orb4"></div>
-</div>
-<div class="grid-overlay"></div>
-<div class="noise"></div>
-
-<!-- HEADER -->
-<header>
-  <a href="#" class="logo">Sai<span>WebStudio</span></a>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact" class="nav-cta">Hire Me</a>
-  </nav>
-</header>
-
-<main>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="badge"><span class="badge-dot"></span> Available for Projects</div>
-    <h1>Websites That<br><span class="grad-text">Bring You Clients</span> 💰</h1>
-    <p>I build high-converting websites for clinics, pharmacies &amp; businesses. Helping Businesses Go Digital.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-glow">Start a Project &rarr;</a>
-      <a href="#projects" class="btn-outline">View My Work</a>
+    <!-- BACKGROUND -->
+    <div class="bg-canvas">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div class="orb orb4"></div>
     </div>
-    <div class="quick-contact">
-      <a href="https://wa.me/917396141819" target="_blank" class="qbtn qbtn-wa">&#x1F4AC; WhatsApp Me</a>
-      <a href="/cdn-cgi/l/email-protection#e68e87948f8e879487d7d5d7d2d5dea6818b878f8ac885898b" class="qbtn qbtn-mail">&#x2709;&#xFE0F; Send Email</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item"><span class="stat-val">&#x26A1;</span><span class="stat-lbl">Fast Delivery</span></div>
-      <div class="stat-item"><span class="stat-val">&#x1F4BC;</span><span class="stat-lbl">Real Results</span></div>
-      <div class="stat-item"><span class="stat-val">100%</span><span class="stat-lbl">Client Focus</span></div>
-      <div class="stat-item"><span class="stat-val">24h</span><span class="stat-lbl">Response</span></div>
-    </div>
-  </div>
-</section>
+    <div class="grid-overlay"></div>
+    <div class="noise"></div>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="sec-label">What I Do</div>
-  <h2 class="sec-title">Services</h2>
-  <p class="sec-sub">Full-stack web solutions for businesses ready to grow online</p>
-  <div class="services-grid">
-    <div class="s-card"><span class="s-icon">&#x1F310;</span><h3>Website Development</h3><p>Custom business, clinic &amp; pharmacy websites built for speed and conversions.</p></div>
-    <div class="s-card"><span class="s-icon">&#x1F3A8;</span><h3>UI/UX Design</h3><p>Modern, mobile-first design that converts visitors into paying clients.</p></div>
-    <div class="s-card"><span class="s-icon">&#x1F4C8;</span><h3>SEO Optimization</h3><p>On-page SEO, keywords &amp; technical setup to rank higher on Google.</p></div>
-    <div class="s-card"><span class="s-icon">&#x2699;&#xFE0F;</span><h3>Website Builders</h3><p>WordPress, Webflow, Shopify &amp; Wix builds tailored to your business.</p></div>
-    <div class="s-card"><span class="s-icon">&#x1F680;</span><h3>Landing Pages</h3><p>High-converting pages for ads, campaigns &amp; lead generation.</p></div>
-    <div class="s-card"><span class="s-icon">&#x1F6E0;&#xFE0F;</span><h3>Maintenance &amp; Support</h3><p>Speed, security, updates &amp; bug fixes so your site always performs.</p></div>
-  </div>
-</section>
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">Hari<span>harasai</span></a>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="nav-cta">Hire Me →</a>
+        </nav>
+    </header>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="sec-label">My Work</div>
-  <h2 class="sec-title">Projects</h2>
-  <p class="sec-sub">Real websites built for real businesses</p>
-  <div class="projects-grid">
-    <a class="p-card featured" href="https://www.infopluspharmacy.com/" target="_blank">
-      <div class="p-img-wrap">
-        <!-- E-Learning / Pharmacy: student studying on laptop with books -->
-        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=700&q=85" alt="Infoplus E-Learning pharmacy platform by Hariharasai web developer Kakinada">
-        <span class="p-tag">E-Learning</span>
-        <span class="live-dot">Live</span>
-      </div>
-      <div class="p-body">
-        <h3>Infoplus E-Learning Platform</h3>
-        <p>Online learning platform with courses, content delivery &amp; user-friendly interface for pharmacy education.</p>
-        <span class="p-link">View Live Site &rarr;</span>
-      </div>
-    </a>
-    <div class="p-card">
-      <div class="p-img-wrap">
-        <!-- Clinic: doctor with stethoscope, clean professional -->
-        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=700&q=85" alt="Clinic website design by Hariharasai freelance web developer India">
-        <span class="p-tag">Healthcare</span>
-      </div>
-      <div class="p-body">
-        <h3>Clinic Website</h3>
-        <p>Modern healthcare website with clean UI, appointment info &amp; doctor profiles.</p>
-      </div>
-    </div>
-    <div class="p-card">
-      <div class="p-img-wrap">
-        <!-- Business: modern office / laptop on clean desk -->
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=85" alt="Business landing page design by Hariharasai web developer Kakinada">
-        <span class="p-tag">Business</span>
-      </div>
-      <div class="p-body">
-        <h3>Business Landing Page</h3>
-        <p>High-converting marketing landing page designed to turn visitors into paying customers.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <main>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="sec-label">Let's Work Together</div>
-  <h2 class="sec-title">Get In Touch</h2>
-  <p class="sec-sub">One click to reach me — or fill the form below</p>
-  <div class="contact-wrap">
-    <div class="contact-left">
-      <h3>Reach me instantly &#x1F447;</h3>
-      <p>Click below to open WhatsApp or Email directly in a new tab. No copy-pasting needed.</p>
-      <div class="contact-cards">
-        <a href="https://wa.me/917396141819" target="_blank" class="contact-card wa">
-          <div class="cc-icon">&#x1F4AC;</div>
-          <div>
-            <div class="cc-label">WhatsApp &mdash; Opens instantly</div>
-            <div class="cc-value">+91 7396141819</div>
-          </div>
-        </a>
-        <a href="/cdn-cgi/l/email-protection#a5cdc4d7cccdc4d7c494969491969de5c2c8c4ccc98bc6cac8" target="_blank" class="contact-card email">
-          <div class="cc-icon">&#x2709;&#xFE0F;</div>
-          <div>
-            <div class="cc-label">Email &mdash; Opens in mail app</div>
-            <div class="cc-value"><span class="__cf_email__" data-cfemail="1f777e6d76777e6d7e2e2c2e2b2c275f78727e7673317c7072">[email&#160;protected]</span></div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <form class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
-      <div class="f-group">
-        <label class="f-label">Your Name</label>
-        <input type="text" name="name" placeholder="John Doe" required>
-      </div>
-      <div class="f-group">
-        <label class="f-label">Email Address</label>
-        <input type="email" name="email" placeholder="john@example.com" required>
-      </div>
-      <div class="f-group">
-        <label class="f-label">Tell me about your project</label>
-        <textarea name="message" placeholder="I need a website for my clinic..."></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Get Free Consultation &rarr;</button>
-    </form>
-  </div>
-</section>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="badge"><span class="badge-dot"></span> Available for Projects</div>
+                <h1>Websites That<br><span class="grad-text">Bring You Clients</span> 💰</h1>
+                <p>I build high-converting websites for clinics, pharmacies & businesses. Helping Businesses Go Digital.
+                </p>
 
-</main>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn-glow"><span>Start a Project</span> <span>→</span></a>
+                    <a href="#projects" class="btn-outline">View My Work</a>
+                </div>
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/917396141819" target="_blank" class="wa-float">&#x1F4AC;</a>
+                <!-- ONE-CLICK CONTACT -->
+                <div class="quick-contact">
+                    <a href="https://wa.me/917396141819" target="_blank" class="qbtn qbtn-wa">
+                        <span class="qbtn-icon">💬</span> WhatsApp Me
+                    </a>
+                    <a href="mailto:harihara131438@gmail.com" target="_blank" class="qbtn qbtn-mail">
+                        <span class="qbtn-icon">✉️</span> Send Email
+                    </a>
+                </div>
 
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2026 SaiWebStudio &mdash; <a href="https://saiwebstudio.com" style="color:var(--cyan);text-decoration:none;">saiwebstudio.com</a></p>
-  <span class="footer-tag">Helping Businesses Go Digital &#x2726;</span>
-</footer>
+                <div class="hero-stats">
+                    <div class="stat-item"><span class="stat-val">⚡</span><span class="stat-lbl">Fast Delivery</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-val">💼</span><span class="stat-lbl">Real Results</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-val">100%</span><span class="stat-lbl">Client Focus</span>
+                    </div>
+                    <div class="stat-item"><span class="stat-val">24h</span><span class="stat-lbl">Response</span></div>
+                </div>
+            </div>
+        </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  var cursor = document.getElementById('cursor');
-  var ring = document.getElementById('cursorRing');
-  var mx = 0, my = 0, rx = 0, ry = 0;
+        <!-- SERVICES -->
+        <section id="services">
+            <div class="sec-label">What I Do</div>
+            <h2 class="sec-title">Services</h2>
+            <p class="sec-sub">Full-stack web solutions for businesses ready to grow online</p>
+            <div class="services-grid">
+                <div class="s-card"><span class="s-icon">🌐</span>
+                    <h3>Website Development</h3>
+                    <p>Custom business, clinic & pharmacy websites built for speed and conversions.</p>
+                </div>
+                <div class="s-card"><span class="s-icon">🎨</span>
+                    <h3>UI/UX Design</h3>
+                    <p>Modern, mobile-first design that converts visitors into paying clients.</p>
+                </div>
+                <div class="s-card"><span class="s-icon">📈</span>
+                    <h3>SEO Optimization</h3>
+                    <p>On-page SEO, keywords & technical setup to rank higher on Google.</p>
+                </div>
+                <div class="s-card"><span class="s-icon">⚙️</span>
+                    <h3>Website Builders</h3>
+                    <p>WordPress, Webflow, Shopify & Wix builds tailored to your business.</p>
+                </div>
+                <div class="s-card"><span class="s-icon">🚀</span>
+                    <h3>Landing Pages</h3>
+                    <p>High-converting pages for ads, campaigns & lead generation.</p>
+                </div>
+                <div class="s-card"><span class="s-icon">🛠️</span>
+                    <h3>Maintenance & Support</h3>
+                    <p>Speed, security, updates & bug fixes so your site always performs.</p>
+                </div>
+            </div>
+        </section>
 
-  document.addEventListener('mousemove', function(e) {
-    mx = e.clientX;
-    my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-  });
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="sec-label">My Work</div>
+            <h2 class="sec-title">Projects</h2>
+            <p class="sec-sub">Real websites built for real businesses</p>
+            <div class="projects-grid">
 
-  function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animRing);
-  }
-  animRing();
+                <a class="p-card featured" href="https://www.infopluspharmacy.com/" target="_blank">
+                    <div class="p-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80"
+                            alt="Infoplus E-Learning">
+                        <span class="p-tag">E-Learning</span>
+                        <span class="live-dot">Live</span>
+                    </div>
+                    <div class="p-body">
+                        <h3>Infoplus E-Learning Platform</h3>
+                        <p>Online learning platform with courses, content delivery & user-friendly interface for
+                            pharmacy education.</p>
+                        <span class="p-link">View Live Site →</span>
+                    </div>
+                </a>
 
-  var hoverEls = document.querySelectorAll('a, button, .s-card');
-  for (var i = 0; i < hoverEls.length; i++) {
-    hoverEls[i].addEventListener('mouseenter', function() {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      ring.s
+                <div class="p-card">
+                    <div class="p-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80"
+                            alt="Clinic Website">
+                        <span class="p-tag">Healthcare</span>
+                    </div>
+                    <div class="p-body">
+                        <h3>Clinic Website</h3>
+                        <p>Modern healthcare website with clean UI, appointment info & doctor profiles.</p>
+                    </div>
+                </div>
+
+                <div class="p-card">
+                    <div class="p-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                            alt="Business Landing Page">
+                        <span class="p-tag">Business</span>
+                    </div>
+                    <div class="p-body">
+                        <h3>Business Landing Page</h3>
+                        <p>High-converting marketing landing page designed to turn visitors into paying customers.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="sec-label">Let's Work Together</div>
+            <h2 class="sec-title">Get In Touch</h2>
+            <p class="sec-sub">One click to reach me — or fill the form below</p>
+
+            <div class="contact-wrap">
+                <div class="contact-left">
+                    <h3>Reach me instantly 👇</h3>
+                    <p>Click below to open WhatsApp or Email directly in a new tab. No copy-pasting needed.</p>
+                    <div class="contact-cards">
+
+                        <a href="https://wa.me/917396141819" target="_blank" class="contact-card wa">
+                            <div class="cc-icon">💬</div>
+                            <div>
+                                <div class="cc-label">WhatsApp — Opens instantly</div>
+                                <div class="cc-value">+91 7396141819</div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:harihara131438@gmail.com" target="_blank" class="contact-card email">
+                            <div class="cc-icon">✉️</div>
+                            <div>
+                                <div class="cc-label">Email — Opens in mail app</div>
+                                <div class="cc-value">harihara131438@gmail.com</div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
+                    <div class="f-group">
+                        <label class="f-label">Your Name</label>
+                        <input type="text" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="f-group">
+                        <label class="f-label">Email Address</label>
+                        <input type="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="f-group">
+                        <label class="f-label">Tell me about your project</label>
+                        <textarea name="message" placeholder="I need a website for my clinic..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Get Free Consultation →</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/917396141819" target="_blank" class="wa-float">💬</a>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Hariharasai Pulla — Web Developer</p>
+        <span class="footer-tag">Helping Businesses Go Digital ✦</span>
+    </footer>
+
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursorRing');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+        function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); }
+        animRing();
+        document.querySelectorAll('a,button,.s-card').forEach(el => {
+            el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; ring.style.width = '52px'; ring.style.height = '52px'; });
+            el.addEventListener('mouseleave', () => { cursor.style.width = '12px'; cursor.style.height = '12px'; ring.style.width = '36px'; ring.style.height = '36px'; });
+        });
+    </script>
+
+</body>
+
+</html>
