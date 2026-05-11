@@ -695,19 +695,70 @@ footer {
     transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
-/* Responsive */
+/* Responsive Improvements */
 @media (max-width: 992px) {
     h1 { font-size: 3rem; }
     .hero { flex-direction: column; text-align: center; padding-top: 120px; }
     .cta-group { justify-content: center; }
     .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
-    .project-card, .project-card.reverse { grid-template-columns: 1fr; }
+    .project-card, .project-card.reverse { grid-template-columns: 1fr; gap: 1.5rem; }
     .project-card.reverse .project-content { order: 1; }
     .project-card.reverse .project-visual { order: 2; }
 }
+
 @media (max-width: 768px) {
-    .nav-links { display: none; /* Mobile menu needed */ }
-    h1 { font-size: 2.5rem; }
-    .glass-panel { padding: 2rem; }
-    .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+    :root {
+        --glass-blur: blur(8px);
+    }
+
+    body { cursor: auto; }
+    .cursor-dot, .cursor-outline { display: none; }
+
+    section { padding: 60px 0; }
+    .container { padding: 0 1.5rem; }
+
+    h1 { font-size: 2.4rem; letter-spacing: -1px; }
+    h2 { font-size: 1.8rem; }
+    
+    .hero-content .subtext { font-size: 1rem; margin: 0 auto 2rem; }
+    
+    .cta-group { 
+        flex-direction: column; 
+        gap: 12px; 
+        width: 100%; 
+        max-width: 300px; 
+        margin: 0 auto 2.5rem; 
+    }
+    .btn-primary, .btn-secondary { width: 100%; }
+
+    .tech-tag { padding: 4px 12px; font-size: 0.75rem; margin-right: 5px; }
+
+    .glass-orb { width: 200px; height: 200px; }
+    .inner-core { width: 100px; height: 100px; }
+
+    .about-text .lead { font-size: 1.1rem; }
+    .focus-list { grid-template-columns: 1fr; gap: 0.8rem; }
+
+    .stat-card { padding: 1.5rem; }
+    .stat-card h3 { font-size: 2.5rem; }
+
+    .project-content { padding: 1.5rem; }
+    .project-visual { padding: 1rem; background: transparent; }
+    .browser-mockup { border-radius: 12px; }
+    .mockup-body { height: 220px; }
+    
+    .service-card { padding: 1.5rem; }
+    
+    .contact-wrapper { gap: 2.5rem; }
+    .contact-info h2 { font-size: 1.8rem; }
+    
+    .footer-content { gap: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    .hero-content { padding: 0; }
+    .tech-stack-hero { display: flex; flex-wrap: wrap; justify-content: center; }
+    .mockup-body { height: 180px; }
+    .project-badge { font-size: 0.7rem; }
 }
