@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             // Toggle Nav
             navLinks.classList.toggle('nav-active');
+            document.body.classList.toggle('no-scroll');
 
             // Animate Links
             navItems.forEach((link, index) => {
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('nav-active');
                 menuToggle.classList.remove('toggle');
+                document.body.classList.remove('no-scroll');
                 navItems.forEach(link => link.style.animation = '');
             });
         });

@@ -27,6 +27,7 @@ html, body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
+    scroll-behavior: smooth;
     /* Hide scrollbar for IE, Edge and Firefox */
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -43,6 +44,10 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     cursor: none; /* Hide default cursor */
+}
+
+.no-scroll {
+    overflow: hidden;
 }
 
 /* Background Effects */
@@ -287,7 +292,7 @@ nav {
     width: 25px;
     height: 2px;
     background: var(--neon-blue);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .nav-active {
@@ -420,6 +425,7 @@ nav {
     display: inline;
     background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .stat-card span {
@@ -777,10 +783,11 @@ footer {
         justify-content: center;
         width: 70%;
         transform: translateX(100%);
-        transition: transform 0.5s ease-in;
+        transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
         gap: 40px;
         z-index: 1000;
         border-left: 1px solid var(--glass-border);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     }
 
     section { padding: 60px 0; overflow: hidden; }
