@@ -128,6 +128,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Escape Logo Interaction
+    const heroLogo = document.querySelector('.hero-logo');
+    const logoShifter = document.querySelector('.logo-shifter');
+    
+    if (heroLogo && logoShifter) {
+        let currentCorner = -1;
+        let clickCount = 0;
+        
+        heroLogo.addEventListener('click', () => {
+            clickCount++;
+            
+            if (clickCount % 4 === 0) {
+                // Return to middle on 4th click
+                logoShifter.style.transform = `translate(0, 0) scale(1) rotate(0deg)`;
+                currentCorner = -1;
+            } else {
+                // Move to corners
+                const offset = 110; 
+                const positions = [
+                    { x: -offset, y: -offset }, // Top Left
+                    { x: offset, y: -offset },  // Top Right
+                    { x: offset, y: offset },   // Bottom Right
+                    { x: -offset, y: offset }   // Bottom Left
+                ];
+
+                let newCorner;
+                do {
+                    newCorner = Math.floor(Math.random() * 4);
+                } while (newCorner === currentCorner);
+                
+                currentCorner = newCorner;
+                const pos = positions[currentCorner];
+
+                logoShifter.style.transform = `translate(${pos.x}px, ${pos.y}px) scale(0.9) rotate(${Math.random() * 40 - 20}deg)`;
+            }
+        });
+    }
+
     // Initialize Particles.js
     if (window.particlesJS) {
         particlesJS("particles-js", {
