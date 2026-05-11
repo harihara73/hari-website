@@ -93,8 +93,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links li');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            // Toggle Nav
+            navLinks.classList.toggle('nav-active');
+
+            // Animate Links
+            navItems.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+
+            // Burger Animation
+            menuToggle.classList.toggle('toggle');
+        });
+
+        // Close menu when clicking on a link
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                menuToggle.classList.remove('toggle');
+                navItems.forEach(link => link.style.animation = '');
+            });
+        });
+    }
+
     // Initialize Particles.js
-    if(window.particlesJS) {
+    if (window.particlesJS) {
         particlesJS("particles-js", {
             "particles": {
                 "number": {
