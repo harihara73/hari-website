@@ -30,14 +30,17 @@ html {
 }
 
 body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-body);
     line-height: 1.6;
     cursor: none; /* Hide default cursor */
+}
+
+.main-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -827,7 +830,11 @@ footer {
     .contact-wrapper { gap: 2.5rem; }
     .contact-info h2 { font-size: 1.8rem; }
     
-    .footer-content { gap: 1.5rem; }
+    .footer-content { 
+        flex-direction: column; 
+        gap: 1.5rem; 
+        text-align: center; 
+    }
 }
 
 @media (max-width: 480px) {
