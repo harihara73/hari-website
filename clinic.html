@@ -1,677 +1,2692 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LifeCare Clinic | Premium Family Healthcare — Kakinada</title>
-<meta name="description" content="LifeCare Clinic — Trusted family healthcare with experienced doctors. Book your appointment today in Kakinada.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --white: #ffffff;
-  --off: #f7f9fb;
-  --off2: #eef2f6;
-  --teal: #0d7377;
-  --teal2: #14a0a5;
-  --teal-light: #e6f4f4;
-  --teal-mid: rgba(13,115,119,0.1);
-  --text: #1a2533;
-  --muted: #6b7a8d;
-  --soft: #a0aab4;
-  --border: #e2e8ef;
-  --shadow: rgba(13,115,119,0.08);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeCare Clinic | Premium Family Healthcare — Kakinada</title>
+  <meta name="description"
+    content="LifeCare Clinic — Trusted family healthcare with experienced doctors. Book your appointment today in Kakinada.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off: #f7f9fb;
+      --off2: #eef2f6;
+      --teal: #0d7377;
+      --teal2: #14a0a5;
+      --teal-light: #e6f4f4;
+      --teal-mid: rgba(13, 115, 119, 0.1);
+      --text: #1a2533;
+      --muted: #6b7a8d;
+      --soft: #a0aab4;
+      --border: #e2e8ef;
+      --shadow: rgba(13, 115, 119, 0.08);
+    }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { font-family:'Nunito',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-::-webkit-scrollbar { width:4px; }
-::-webkit-scrollbar-track { background:var(--off); }
-::-webkit-scrollbar-thumb { background:var(--teal2); border-radius:4px; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* HEADER */
-header {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:0 60px;
-  display:flex; justify-content:space-between; align-items:center;
-  height:72px;
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  transition:box-shadow 0.3s;
-}
-header.scrolled { box-shadow:0 4px 24px rgba(13,115,119,0.08); }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-.logo-wrap { display:flex; align-items:center; gap:10px; text-decoration:none; }
-.logo-mark {
-  width:38px; height:38px; border-radius:10px;
-  background:linear-gradient(135deg,var(--teal),var(--teal2));
-  display:flex; align-items:center; justify-content:center;
-  color:#fff; font-size:1rem; font-weight:700;
-  font-family:'Playfair Display',serif; letter-spacing:-0.5px;
-}
-.logo-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--text); }
-.logo-name span { color:var(--teal); }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
 
-nav { display:flex; gap:8px; align-items:center; }
-nav a {
-  color:var(--muted); text-decoration:none; font-size:0.88rem;
-  font-weight:500; padding:8px 14px; border-radius:8px;
-  transition:all 0.2s;
-}
-nav a:not(.btn-appt):hover { color:var(--teal); background:var(--teal-light); }
+    ::-webkit-scrollbar-track {
+      background: var(--off);
+    }
 
-.btn-appt {
-  background:var(--teal);
-  color:#fff !important;
-  padding:10px 22px; border-radius:8px;
-  font-size:0.85rem; font-weight:600;
-  text-decoration:none; letter-spacing:0.02em;
-  transition:all 0.25s;
-  box-shadow:0 4px 16px rgba(13,115,119,0.3);
-}
-.btn-appt:hover { background:var(--teal2); transform:translateY(-2px); box-shadow:0 8px 28px rgba(13,115,119,0.4); color:#fff !important; }
+    ::-webkit-scrollbar-thumb {
+      background: var(--teal2);
+      border-radius: 4px;
+    }
 
-/* HERO */
-.hero {
-  min-height:100vh;
-  display:grid; grid-template-columns:1fr 1fr;
-  align-items:center;
-  padding:100px 60px 60px;
-  gap:60px;
-  background:var(--off);
-  position:relative; overflow:hidden;
-}
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
 
-/* BG DECORATION */
-.hero::before {
-  content:'';
-  position:absolute; right:-120px; top:-120px;
-  width:600px; height:600px; border-radius:50%;
-  background:radial-gradient(circle,rgba(13,115,119,0.07),transparent 70%);
-  pointer-events:none;
-}
-.hero::after {
-  content:'';
-  position:absolute; left:-80px; bottom:-80px;
-  width:400px; height:400px; border-radius:50%;
-  background:radial-gradient(circle,rgba(20,160,165,0.05),transparent 70%);
-  pointer-events:none;
-}
+    header.scrolled {
+      box-shadow: 0 4px 24px rgba(13, 115, 119, 0.08);
+    }
 
-.hero-left { position:relative; z-index:1; }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
 
-.hero-pill {
-  display:inline-flex; align-items:center; gap:8px;
-  background:var(--teal-light); border:1px solid rgba(13,115,119,0.2);
-  color:var(--teal); padding:6px 14px; border-radius:100px;
-  font-size:0.75rem; font-weight:600; letter-spacing:0.06em;
-  text-transform:uppercase; margin-bottom:28px;
-  animation:slideIn 0.6s ease both;
-}
-.pill-dot { width:7px; height:7px; background:var(--teal2); border-radius:50%; animation:pulse 2s infinite; }
-@keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(0.6);opacity:0.5} }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--teal), var(--teal2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.5px;
+    }
 
-.hero h1 {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2.8rem,5vw,4.6rem);
-  font-weight:700; line-height:1.08;
-  letter-spacing:-0.02em; margin-bottom:20px;
-  animation:slideIn 0.6s 0.1s ease both;
-}
-.hero h1 em { font-style:italic; color:var(--teal); }
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
 
-.hero-desc {
-  font-size:1rem; color:var(--muted); line-height:1.8;
-  max-width:460px; font-weight:400; margin-bottom:36px;
-  animation:slideIn 0.6s 0.2s ease both;
-}
+    .logo-name span {
+      color: var(--teal);
+    }
 
-.hero-btns {
-  display:flex; gap:14px; flex-wrap:wrap;
-  animation:slideIn 0.6s 0.3s ease both;
-}
-.btn-primary {
-  background:var(--teal); color:#fff;
-  padding:14px 30px; border-radius:10px;
-  font-size:0.9rem; font-weight:600;
-  text-decoration:none; letter-spacing:0.02em;
-  transition:all 0.25s;
-  box-shadow:0 6px 24px rgba(13,115,119,0.35);
-  display:inline-flex; align-items:center; gap:8px;
-}
-.btn-primary:hover { background:var(--teal2); transform:translateY(-3px); box-shadow:0 10px 36px rgba(13,115,119,0.45); }
+    nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
 
-.btn-ghost {
-  background:transparent; color:var(--teal);
-  padding:14px 30px; border-radius:10px;
-  font-size:0.9rem; font-weight:600;
-  text-decoration:none; border:1.5px solid var(--teal);
-  transition:all 0.25s; display:inline-flex; align-items:center; gap:8px;
-}
-.btn-ghost:hover { background:var(--teal); color:#fff; transform:translateY(-3px); box-shadow:0 10px 36px rgba(13,115,119,0.3); }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
 
-/* HERO STATS ROW */
-.hero-stats {
-  display:flex; gap:0; margin-top:48px;
-  border:1px solid var(--border); border-radius:14px;
-  overflow:hidden; background:var(--white);
-  box-shadow:0 4px 20px var(--shadow);
-  animation:slideIn 0.6s 0.4s ease both;
-}
-.hs {
-  flex:1; padding:20px 24px; text-align:center;
-  border-right:1px solid var(--border);
-  transition:background 0.2s;
-}
-.hs:last-child { border-right:none; }
-.hs:hover { background:var(--teal-light); }
-.hs-num { font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:700; color:var(--teal); display:block; line-height:1; }
-.hs-lbl { font-size:0.72rem; color:var(--muted); font-weight:500; margin-top:4px; display:block; letter-spacing:0.04em; }
+    nav a:not(.btn-appt):hover {
+      color: var(--teal);
+      background: var(--teal-light);
+    }
 
-/* HERO RIGHT IMAGE */
-.hero-right {
-  position:relative; z-index:1;
-  animation:slideIn 0.7s 0.2s ease both;
-}
-.hero-img-wrap {
-  border-radius:24px; overflow:hidden;
-  height:520px; position:relative;
-  box-shadow:0 32px 80px rgba(13,115,119,0.2);
-}
-.hero-img-wrap img { width:100%; height:100%; object-fit:cover; object-position:center; }
-.hero-img-wrap::after {
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(180deg,transparent 60%,rgba(13,115,119,0.3) 100%);
-}
+    .btn-appt {
+      background: var(--teal);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(13, 115, 119, 0.3);
+    }
 
-/* FLOATING CARD */
-.float-card {
-  position:absolute; bottom:28px; left:-30px;
-  background:var(--white); border-radius:14px;
-  padding:16px 20px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.12);
-  display:flex; align-items:center; gap:12px;
-  z-index:2; min-width:200px;
-}
-.fc-icon { width:42px; height:42px; border-radius:10px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
-.fc-num { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--teal); line-height:1; }
-.fc-lbl { font-size:0.72rem; color:var(--muted); font-weight:500; }
+    .btn-appt:hover {
+      background: var(--teal2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(13, 115, 119, 0.4);
+      color: #fff !important;
+    }
 
-.float-card2 {
-  position:absolute; top:40px; right:-24px;
-  background:var(--teal); border-radius:14px;
-  padding:14px 18px; z-index:2; color:#fff;
-  box-shadow:0 12px 40px rgba(13,115,119,0.35);
-}
-.fc2-title { font-size:0.72rem; font-weight:600; letter-spacing:0.06em; opacity:0.8; margin-bottom:4px; }
-.fc2-val { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; }
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 60px 60px;
+      gap: 60px;
+      background: var(--off);
+      position: relative;
+      overflow: hidden;
+    }
 
-@keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    /* BG DECORATION */
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13, 115, 119, 0.07), transparent 70%);
+      pointer-events: none;
+    }
 
-/* SECTION COMMONS */
-section { padding:100px 60px; }
-.sec-tag {
-  display:inline-flex; align-items:center; gap:8px;
-  color:var(--teal); font-size:0.72rem; font-weight:700;
-  letter-spacing:0.12em; text-transform:uppercase; margin-bottom:12px;
-}
-.sec-tag::before { content:''; width:20px; height:2px; background:var(--teal); border-radius:2px; }
-.sec-title {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.8rem,3.5vw,2.9rem);
-  font-weight:700; line-height:1.1;
-  letter-spacing:-0.02em; margin-bottom:14px; color:var(--text);
-}
-.sec-sub { color:var(--muted); font-size:0.95rem; line-height:1.8; font-weight:400; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20, 160, 165, 0.05), transparent 70%);
+      pointer-events: none;
+    }
 
-/* SERVICES */
-#services { background:var(--white); }
-.svc-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:56px; flex-wrap:wrap; gap:24px; }
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
 
-.svc-grid {
-  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
-}
-.svc-card {
-  background:var(--off); border:1px solid var(--border);
-  border-radius:20px; padding:34px 28px;
-  transition:all 0.3s; position:relative; overflow:hidden;
-  cursor:default;
-}
-.svc-card::before {
-  content:''; position:absolute;
-  top:0; left:0; right:0; height:3px;
-  background:linear-gradient(90deg,var(--teal),var(--teal2));
-  transform:scaleX(0); transform-origin:left;
-  transition:transform 0.35s;
-}
-.svc-card:hover { background:var(--white); border-color:rgba(13,115,119,0.25); transform:translateY(-6px); box-shadow:0 20px 50px var(--shadow); }
-.svc-card:hover::before { transform:scaleX(1); }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-light);
+      border: 1px solid rgba(13, 115, 119, 0.2);
+      color: var(--teal);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: slideIn 0.6s ease both;
+    }
 
-.svc-ico {
-  width:52px; height:52px; border-radius:14px;
-  background:var(--teal-light); display:flex;
-  align-items:center; justify-content:center;
-  font-size:1.4rem; margin-bottom:20px;
-  transition:background 0.3s, transform 0.3s;
-}
-.svc-card:hover .svc-ico { background:var(--teal); transform:scale(1.08); }
-.svc-card h3 { font-family:'Playfair Display',serif; font-size:1.12rem; font-weight:700; margin-bottom:10px; color:var(--text); }
-.svc-card p { color:var(--muted); font-size:0.86rem; line-height:1.75; font-weight:400; }
-.svc-arrow { display:inline-flex; align-items:center; gap:4px; color:var(--teal); font-size:0.8rem; font-weight:600; margin-top:16px; opacity:0; transform:translateX(-6px); transition:all 0.3s; }
-.svc-card:hover .svc-arrow { opacity:1; transform:translateX(0); }
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--teal2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
 
-/* DOCTORS */
-#doctors { background:var(--off); }
-.doc-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:56px; flex-wrap:wrap; gap:24px; }
-.doc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+    @keyframes pulse {
 
-.doc-card {
-  background:var(--white); border-radius:20px;
-  overflow:hidden; transition:all 0.3s;
-  border:1px solid var(--border);
-}
-.doc-card:hover { transform:translateY(-8px); box-shadow:0 24px 60px rgba(13,115,119,0.15); border-color:rgba(13,115,119,0.2); }
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
 
-.doc-photo {
-  height:240px; overflow:hidden; position:relative;
-  background:var(--teal-light);
-}
-.doc-photo img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.5s; filter:saturate(0.85); }
-.doc-card:hover .doc-photo img { transform:scale(1.04); filter:saturate(1); }
+      50% {
+        transform: scale(0.6);
+        opacity: 0.5
+      }
+    }
 
-.doc-spec-bar {
-  position:absolute; bottom:0; left:0; right:0;
-  background:linear-gradient(0deg,rgba(13,115,119,0.85),transparent);
-  padding:16px 20px 12px;
-  color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
-}
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      animation: slideIn 0.6s 0.1s ease both;
+    }
 
-.doc-info { padding:22px; }
-.doc-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--text); margin-bottom:4px; }
-.doc-qual { font-size:0.78rem; color:var(--muted); font-weight:400; margin-bottom:14px; }
-.doc-tag-row { display:flex; gap:8px; flex-wrap:wrap; }
-.dtag {
-  background:var(--teal-light); color:var(--teal);
-  padding:4px 12px; border-radius:100px;
-  font-size:0.7rem; font-weight:600; letter-spacing:0.04em;
-}
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
 
-/* APPOINTMENT */
-#appointment { background:var(--white); }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 460px;
+      font-weight: 400;
+      margin-bottom: 36px;
+      animation: slideIn 0.6s 0.2s ease both;
+    }
 
-.appt-grid { display:grid; grid-template-columns:1fr 1.3fr; gap:80px; align-items:start; }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: slideIn 0.6s 0.3s ease both;
+    }
 
-.appt-left { }
-.appt-left .sec-sub { margin-bottom:40px; }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+      box-shadow: 0 6px 24px rgba(13, 115, 119, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.reach-list { display:flex; flex-direction:column; gap:14px; }
-.reach-item {
-  display:flex; align-items:center; gap:14px;
-  padding:16px 20px; border-radius:12px;
-  background:var(--off); border:1px solid var(--border);
-  text-decoration:none; color:inherit; transition:all 0.25s;
-}
-.reach-item:hover { background:var(--teal-light); border-color:rgba(13,115,119,0.3); transform:translateX(4px); }
-.reach-item:hover .ri-label { color:var(--teal); }
-.reach-item:hover .ri-val { color:var(--teal); }
-.ri-icon { width:40px; height:40px; border-radius:10px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; transition:background 0.25s; }
-.reach-item:hover .ri-icon { background:var(--teal); }
-.ri-label { font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; font-weight:600; margin-bottom:2px; }
-.ri-val { font-size:0.88rem; font-weight:600; color:var(--text); }
+    .btn-primary:hover {
+      background: var(--teal2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(13, 115, 119, 0.45);
+    }
 
-/* FORM */
-.appt-form-wrap {
-  background:var(--off); border:1px solid var(--border);
-  border-radius:24px; padding:44px;
-  box-shadow:0 8px 40px var(--shadow);
-}
-.form-title { font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:700; margin-bottom:6px; color:var(--text); }
-.form-sub { font-size:0.85rem; color:var(--muted); margin-bottom:32px; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--teal);
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--teal);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.frow { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.fg { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
-.fg label { font-size:0.72rem; color:var(--muted); font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
-.fg input, .fg select, .fg textarea {
-  background:var(--white); border:1.5px solid var(--border);
-  border-radius:10px; padding:12px 16px;
-  color:var(--text); font-family:'Nunito',sans-serif;
-  font-size:0.9rem; font-weight:400; outline:none;
-  transition:all 0.2s; -webkit-appearance:none;
-}
-.fg input::placeholder, .fg textarea::placeholder { color:var(--soft); }
-.fg input:focus, .fg select:focus, .fg textarea:focus {
-  border-color:var(--teal); box-shadow:0 0 0 4px rgba(13,115,119,0.08);
-}
-.fg select option { background:var(--white); }
-.fg textarea { height:100px; resize:none; }
+    .btn-ghost:hover {
+      background: var(--teal);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(13, 115, 119, 0.3);
+    }
 
-.btn-form-submit {
-  width:100%; background:var(--teal); color:#fff;
-  padding:15px; border-radius:10px;
-  font-size:0.92rem; font-weight:700;
-  border:none; cursor:pointer;
-  font-family:'Nunito',sans-serif; letter-spacing:0.03em;
-  transition:all 0.25s;
-  box-shadow:0 6px 24px rgba(13,115,119,0.3);
-  margin-top:4px;
-  display:flex; align-items:center; justify-content:center; gap:8px;
-}
-.btn-form-submit:hover { background:var(--teal2); transform:translateY(-2px); box-shadow:0 10px 36px rgba(13,115,119,0.45); }
+    /* HERO STATS ROW */
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 4px 20px var(--shadow);
+      animation: slideIn 0.6s 0.4s ease both;
+    }
 
-/* FOOTER */
-footer {
-  background:var(--text); color:rgba(255,255,255,0.7);
-  padding:40px 60px;
-  display:flex; justify-content:space-between; align-items:center;
-  flex-wrap:wrap; gap:20px;
-}
-.foot-logo { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#fff; }
-.foot-logo span { color:var(--teal2); }
-footer p { font-size:0.82rem; }
-.foot-credit { font-size:0.78rem; color:var(--teal2); font-weight:600; }
+    .hs {
+      flex: 1;
+      padding: 20px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
 
-/* WHATSAPP */
-.wa-btn {
-  position:fixed; bottom:28px; right:28px; z-index:999;
-  width:56px; height:56px; border-radius:50%;
-  background:linear-gradient(135deg,#25D366,#128C7E);
-  color:#fff; display:flex; align-items:center; justify-content:center;
-  font-size:1.4rem; text-decoration:none;
-  box-shadow:0 4px 20px rgba(37,211,102,0.4);
-  transition:transform 0.2s, box-shadow 0.2s;
-  animation:bob 3s ease-in-out infinite;
-}
-.wa-btn:hover { animation:none; transform:scale(1.12); box-shadow:0 8px 30px rgba(37,211,102,0.55); }
-@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    .hs:last-child {
+      border-right: none;
+    }
 
-/* DIVIDER LINE */
-.teal-line { width:50px; height:3px; background:linear-gradient(90deg,var(--teal),var(--teal2)); border-radius:2px; margin:16px 0 24px; }
+    .hs:hover {
+      background: var(--teal-light);
+    }
 
-/* RESPONSIVE */
-@media(max-width:1024px) {
-  header { padding:0 24px; }
-  section { padding:70px 24px; }
-  .hero { grid-template-columns:1fr; padding:100px 24px 60px; gap:40px; }
-  .hero-right { display:none; }
-  .svc-grid { grid-template-columns:1fr 1fr; }
-  .doc-grid { grid-template-columns:1fr 1fr; }
-  .appt-grid { grid-template-columns:1fr; gap:40px; }
-  footer { padding:32px 24px; flex-direction:column; text-align:center; }
-}
-@media(max-width:600px) {
-  nav a:not(.btn-appt) { display:none; }
-  .svc-grid { grid-template-columns:1fr; }
-  .doc-grid { grid-template-columns:1fr; }
-  .hero-stats { flex-direction:column; }
-  .hs { border-right:none; border-bottom:1px solid var(--border); }
-  .frow { grid-template-columns:1fr; }
-  .appt-form-wrap { padding:24px; }
-}
-</style>
+    .hs-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--teal);
+      display: block;
+      line-height: 1;
+    }
+
+    .hs-lbl {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 4px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+
+    /* HERO RIGHT IMAGE */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      animation: slideIn 0.7s 0.2s ease both;
+    }
+
+    .hero-img-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      height: 520px;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(13, 115, 119, 0.2);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(13, 115, 119, 0.3) 100%);
+    }
+
+    /* FLOATING CARD */
+    .float-card {
+      position: absolute;
+      bottom: 28px;
+      left: -30px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+      min-width: 200px;
+    }
+
+    .fc-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .fc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .fc-lbl {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .float-card2 {
+      position: absolute;
+      top: 40px;
+      right: -24px;
+      background: var(--teal);
+      border-radius: 14px;
+      padding: 14px 18px;
+      z-index: 2;
+      color: #fff;
+      box-shadow: 0 12px 40px rgba(13, 115, 119, 0.35);
+    }
+
+    .fc2-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      opacity: 0.8;
+      margin-bottom: 4px;
+    }
+
+    .fc2-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* SECTION COMMONS */
+    section {
+      padding: 100px 60px;
+    }
+
+    .sec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sec-tag::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .sec-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    /* SERVICES */
+    #services {
+      background: var(--white);
+    }
+
+    .svc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .svc-card {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 34px 28px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+    }
+
+    .svc-card:hover {
+      background: var(--white);
+      border-color: rgba(13, 115, 119, 0.25);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px var(--shadow);
+    }
+
+    .svc-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .svc-ico {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .svc-card:hover .svc-ico {
+      background: var(--teal);
+      transform: scale(1.08);
+    }
+
+    .svc-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .svc-card p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .svc-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--teal);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 16px;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all 0.3s;
+    }
+
+    .svc-card:hover .svc-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* DOCTORS */
+    #doctors {
+      background: var(--off);
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .doc-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid var(--border);
+    }
+
+    .doc-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(13, 115, 119, 0.15);
+      border-color: rgba(13, 115, 119, 0.2);
+    }
+
+    .doc-photo {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+      background: var(--teal-light);
+    }
+
+    .doc-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.5s;
+      filter: saturate(0.85);
+    }
+
+    .doc-card:hover .doc-photo img {
+      transform: scale(1.04);
+      filter: saturate(1);
+    }
+
+    .doc-spec-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(13, 115, 119, 0.85), transparent);
+      padding: 16px 20px 12px;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .doc-info {
+      padding: 22px;
+    }
+
+    .doc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .doc-qual {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .doc-tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dtag {
+      background: var(--teal-light);
+      color: var(--teal);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* APPOINTMENT */
+    #appointment {
+      background: var(--white);
+    }
+
+    .appt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .appt-left {}
+
+    .appt-left .sec-sub {
+      margin-bottom: 40px;
+    }
+
+    .reach-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .reach-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: var(--off);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+    }
+
+    .reach-item:hover {
+      background: var(--teal-light);
+      border-color: rgba(13, 115, 119, 0.3);
+      transform: translateX(4px);
+    }
+
+    .reach-item:hover .ri-label {
+      color: var(--teal);
+    }
+
+    .reach-item:hover .ri-val {
+      color: var(--teal);
+    }
+
+    .ri-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: background 0.25s;
+    }
+
+    .reach-item:hover .ri-icon {
+      background: var(--teal);
+    }
+
+    .ri-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .ri-val {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* FORM */
+    .appt-form-wrap {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: 0 8px 40px var(--shadow);
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .form-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .frow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .fg {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .fg label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .fg input,
+    .fg select,
+    .fg textarea {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      outline: none;
+      transition: all 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .fg input::placeholder,
+    .fg textarea::placeholder {
+      color: var(--soft);
+    }
+
+    .fg input:focus,
+    .fg select:focus,
+    .fg textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(13, 115, 119, 0.08);
+    }
+
+    .fg select option {
+      background: var(--white);
+    }
+
+    .fg textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .btn-form-submit {
+      width: 100%;
+      background: var(--teal);
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: 0.03em;
+      transition: all 0.25s;
+      box-shadow: 0 6px 24px rgba(13, 115, 119, 0.3);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-form-submit:hover {
+      background: var(--teal2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(13, 115, 119, 0.45);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .foot-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .foot-logo span {
+      color: var(--teal2);
+    }
+
+    footer p {
+      font-size: 0.82rem;
+    }
+
+    .foot-credit {
+      font-size: 0.78rem;
+      color: var(--teal2);
+      font-weight: 600;
+    }
+
+    /* WHATSAPP */
+    .wa-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: bob 3s ease-in-out infinite;
+    }
+
+    .wa-btn:hover {
+      animation: none;
+      transform: scale(1.12);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.55);
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-6px)
+      }
+    }
+
+    /* DIVIDER LINE */
+    .teal-line {
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal2));
+      border-radius: 2px;
+      margin: 16px 0 24px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      header {
+        padding: 0 24px;
+      }
+
+      section {
+        padding: 70px 24px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 60px;
+        gap: 40px;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .doc-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .appt-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media(max-width:600px) {
+      nav a:not(.btn-appt) {
+        display: none;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+      }
+
+      .hs {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .frow {
+        grid-template-columns: 1fr;
+      }
+
+      .appt-form-wrap {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header id="header">
-  <a href="#" class="logo-wrap">
-    <div class="logo-mark">LC</div>
-    <span class="logo-name">Life<span>Care</span></span>
-  </a>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#doctors">Doctors</a>
-    <a href="#appointment">Contact</a>
-    <a href="#appointment" class="btn-appt">Book Appointment</a>
-  </nav>
-</header>
+  <!-- HEADER -->
+  <header id="header">
+    <a href="#" class="logo-wrap">
+      <div class="logo-mark">LC</div>
+      <span class="logo-name">Life<span>Care</span></span>
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#appointment">Contact</a>
+      <a href="#appointment" class="btn-appt">Book Appointment</a>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-pill"><span class="pill-dot"></span> Trusted Family Healthcare</div>
-    <h1>Your Health,<br>Our <em>Priority</em></h1>
-    <p class="hero-desc">Expert medical care for every member of your family — delivered with compassion, precision and the highest standards of modern medicine.</p>
-    <div class="hero-btns">
-      <a href="#appointment" class="btn-primary">Book Appointment &#x2192;</a>
-      <a href="#services" class="btn-ghost">Our Services</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-pill"><span class="pill-dot"></span> Trusted Family Healthcare</div>
+      <h1>Your Health,<br>Our <em>Priority</em></h1>
+      <p class="hero-desc">Expert medical care for every member of your family — delivered with compassion, precision
+        and the highest standards of modern medicine.</p>
+      <div class="hero-btns">
+        <a href="#appointment" class="btn-primary">Book Appointment &#x2192;</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><span class="hs-num">15+</span><span class="hs-lbl">Years of Care</span></div>
+        <div class="hs"><span class="hs-num">8k+</span><span class="hs-lbl">Patients</span></div>
+        <div class="hs"><span class="hs-num">12</span><span class="hs-lbl">Specialists</span></div>
+        <div class="hs"><span class="hs-num">98%</span><span class="hs-lbl">Satisfaction</span></div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="hs"><span class="hs-num">15+</span><span class="hs-lbl">Years of Care</span></div>
-      <div class="hs"><span class="hs-num">8k+</span><span class="hs-lbl">Patients</span></div>
-      <div class="hs"><span class="hs-num">12</span><span class="hs-lbl">Specialists</span></div>
-      <div class="hs"><span class="hs-num">98%</span><span class="hs-lbl">Satisfaction</span></div>
-    </div>
-  </div>
 
-  <div class="hero-right">
-    <div class="hero-img-wrap">
-      <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=900&q=85" alt="LifeCare Clinic doctor">
-      <div class="float-card">
-        <div class="fc-icon">&#x1F4C5;</div>
-        <div>
-          <div class="fc-num">Today</div>
-          <div class="fc-lbl">Slots Available</div>
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=900&q=85" alt="LifeCare Clinic doctor">
+        <div class="float-card">
+          <div class="fc-icon">&#x1F4C5;</div>
+          <div>
+            <div class="fc-num">Today</div>
+            <div class="fc-lbl">Slots Available</div>
+          </div>
         </div>
-      </div>
-      <div class="float-card2">
-        <div class="fc2-title">Response Time</div>
-        <div class="fc2-val">Under 2hrs</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="svc-header">
-    <div>
-      <div class="sec-tag">What We Offer</div>
-      <h2 class="sec-title">Medical Services</h2>
-      <div class="teal-line"></div>
-    </div>
-    <p class="sec-sub" style="max-width:380px">Comprehensive healthcare under one roof — from preventive care to specialized treatment.</p>
-  </div>
-  <div class="svc-grid">
-    <div class="svc-card">
-      <div class="svc-ico">&#x1FA7A;</div>
-      <h3>General Consultation</h3>
-      <p>Comprehensive diagnosis and treatment for common illnesses and chronic health conditions.</p>
-      <span class="svc-arrow">Learn more &#x2192;</span>
-    </div>
-    <div class="svc-card">
-      <div class="svc-ico">&#x1F9EC;</div>
-      <h3>Preventive Care</h3>
-      <p>Vaccinations, screenings and lifestyle guidance to keep your family healthy year-round.</p>
-      <span class="svc-arrow">Learn more &#x2192;</span>
-    </div>
-    <div class="svc-card">
-      <div class="svc-ico">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
-      <h3>Family Medicine</h3>
-      <p>Dedicated care for every stage of life — newborns to seniors — all under one trusted roof.</p>
-      <span class="svc-arrow">Learn more &#x2192;</span>
-    </div>
-    <div class="svc-card">
-      <div class="svc-ico">&#x1F9E0;</div>
-      <h3>Mental Wellness</h3>
-      <p>Counselling and mental health support for stress, anxiety and emotional wellbeing.</p>
-      <span class="svc-arrow">Learn more &#x2192;</span>
-    </div>
-    <div class="svc-card">
-      <div class="svc-ico">&#x1F489;</div>
-      <h3>Lab & Diagnostics</h3>
-      <p>In-house pathology, blood work and diagnostics with fast, accurate on-site results.</p>
-      <span class="svc-arrow">Learn more &#x2192;</span>
-    </div>
-    <div class="svc-card">
-      <div class="svc-ico">&#x1F3E5;</div>
-      <h3>Emergency Care</h3>
-      <p>Prompt attention for urgent medical needs with experienced staff and same-day appointments.</p>
-      <span class="svc-arrow">Learn more &#x2192;</span>
-    </div>
-  </div>
-</section>
-
-<!-- DOCTORS -->
-<section id="doctors">
-  <div class="doc-header">
-    <div>
-      <div class="sec-tag">Meet the Team</div>
-      <h2 class="sec-title">Our Expert Doctors</h2>
-      <div class="teal-line"></div>
-    </div>
-    <p class="sec-sub" style="max-width:380px">Highly qualified, compassionate physicians dedicated to your wellbeing and long-term health.</p>
-  </div>
-  <div class="doc-grid">
-
-    <div class="doc-card">
-      <div class="doc-photo">
-        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=85" alt="Dr. Arjun Mehta">
-        <div class="doc-spec-bar">General Medicine</div>
-      </div>
-      <div class="doc-info">
-        <div class="doc-name">Dr. Arjun Mehta</div>
-        <div class="doc-qual">MBBS, MD &mdash; 14 years experience</div>
-        <div class="doc-tag-row">
-          <span class="dtag">General Medicine</span>
-          <span class="dtag">Lead Physician</span>
+        <div class="float-card2">
+          <div class="fc2-title">Response Time</div>
+          <div class="fc2-val">Under 2hrs</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="doc-card">
-      <div class="doc-photo">
-        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=85" alt="Dr. Priya Sharma">
-        <div class="doc-spec-bar">Child & Family Care</div>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="svc-header">
+      <div>
+        <div class="sec-tag">What We Offer</div>
+        <h2 class="sec-title">Medical Services</h2>
+        <div class="teal-line"></div>
       </div>
-      <div class="doc-info">
-        <div class="doc-name">Dr. Priya Sharma</div>
-        <div class="doc-qual">MBBS, DCH &mdash; 10 years experience</div>
-        <div class="doc-tag-row">
-          <span class="dtag">Pediatrics</span>
-          <span class="dtag">Family Care</span>
-        </div>
+      <p class="sec-sub" style="max-width:380px">Comprehensive healthcare under one roof — from preventive care to
+        specialized treatment.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-ico">&#x1FA7A;</div>
+        <h3>General Consultation</h3>
+        <p>Comprehensive diagnosis and treatment for common illnesses and chronic health conditions.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F9EC;</div>
+        <h3>Preventive Care</h3>
+        <p>Vaccinations, screenings and lifestyle guidance to keep your family healthy year-round.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
+        <h3>Family Medicine</h3>
+        <p>Dedicated care for every stage of life — newborns to seniors — all under one trusted roof.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F9E0;</div>
+        <h3>Mental Wellness</h3>
+        <p>Counselling and mental health support for stress, anxiety and emotional wellbeing.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F489;</div>
+        <h3>Lab & Diagnostics</h3>
+        <p>In-house pathology, blood work and diagnostics with fast, accurate on-site results.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F3E5;</div>
+        <h3>Emergency Care</h3>
+        <p>Prompt attention for urgent medical needs with experienced staff and same-day appointments.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
       </div>
     </div>
+  </section>
 
-    <div class="doc-card">
-      <div class="doc-photo">
-        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=85" alt="Dr. Ravi Kumar">
-        <div class="doc-spec-bar">Internal Medicine</div>
+  <!-- DOCTORS -->
+  <section id="doctors">
+    <div class="doc-header">
+      <div>
+        <div class="sec-tag">Meet the Team</div>
+        <h2 class="sec-title">Our Expert Doctors</h2>
+        <div class="teal-line"></div>
       </div>
-      <div class="doc-info">
-        <div class="doc-name">Dr. Ravi Kumar</div>
-        <div class="doc-qual">MBBS, DNB &mdash; 9 years experience</div>
-        <div class="doc-tag-row">
-          <span class="dtag">Internal Medicine</span>
-          <span class="dtag">Diagnostics</span>
+      <p class="sec-sub" style="max-width:380px">Highly qualified, compassionate physicians dedicated to your wellbeing
+        and long-term health.</p>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=85" alt="Dr. Arjun Mehta">
+          <div class="doc-spec-bar">General Medicine</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Arjun Mehta</div>
+          <div class="doc-qual">MBBS, MD &mdash; 14 years experience</div>
+          <div class="doc-tag-row">
+            <span class="dtag">General Medicine</span>
+            <span class="dtag">Lead Physician</span>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
-
-<!-- APPOINTMENT -->
-<section id="appointment">
-  <div class="appt-grid">
-    <div class="appt-left">
-      <div class="sec-tag">Get In Touch</div>
-      <h2 class="sec-title">Book Your Appointment</h2>
-      <div class="teal-line"></div>
-      <p class="sec-sub" style="margin-bottom:36px">Fill the form or reach us directly. We respond within 2 hours during clinic hours.</p>
-      <div class="reach-list">
-        <a href="tel:+917396141819" class="reach-item">
-          <div class="ri-icon">&#x1F4DE;</div>
-          <div><div class="ri-label">Call Us</div><div class="ri-val">+91 7396141819</div></div>
-        </a>
-        <a href="https://wa.me/917396141819" target="_blank" class="reach-item">
-          <div class="ri-icon">&#x1F4AC;</div>
-          <div><div class="ri-label">WhatsApp</div><div class="ri-val">Chat with us instantly</div></div>
-        </a>
-        <a href="mailto:harihara131438@gmail.com" target="_blank" class="reach-item">
-          <div class="ri-icon">&#x2709;</div>
-          <div><div class="ri-label">Email</div><div class="ri-val">harihara131438@gmail.com</div></div>
-        </a>
-        <div class="reach-item" style="cursor:default">
-          <div class="ri-icon">&#x1F4CD;</div>
-          <div><div class="ri-label">Location</div><div class="ri-val">Kakinada, Andhra Pradesh</div></div>
+      <div class="doc-card">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=85" alt="Dr. Priya Sharma">
+          <div class="doc-spec-bar">Child & Family Care</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Priya Sharma</div>
+          <div class="doc-qual">MBBS, DCH &mdash; 10 years experience</div>
+          <div class="doc-tag-row">
+            <span class="dtag">Pediatrics</span>
+            <span class="dtag">Family Care</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="appt-form-wrap">
-      <div class="form-title">Request Appointment</div>
-      <div class="form-sub">We'll confirm your slot within 2 hours &#x23F0;</div>
-      <div class="frow">
-        <div class="fg"><label>First Name</label><input type="text" placeholder="Ravi"></div>
-        <div class="fg"><label>Last Name</label><input type="text" placeholder="Kumar"></div>
+      <div class="doc-card">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=85" alt="Dr. Ravi Kumar">
+          <div class="doc-spec-bar">Internal Medicine</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Ravi Kumar</div>
+          <div class="doc-qual">MBBS, DNB &mdash; 9 years experience</div>
+          <div class="doc-tag-row">
+            <span class="dtag">Internal Medicine</span>
+            <span class="dtag">Diagnostics</span>
+          </div>
+        </div>
       </div>
-      <div class="frow">
-        <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
-        <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+
+    </div>
+  </section>
+
+  <!-- APPOINTMENT -->
+  <section id="appointment">
+    <div class="appt-grid">
+      <div class="appt-left">
+        <div class="sec-tag">Get In Touch</div>
+        <h2 class="sec-title">Book Your Appointment</h2>
+        <div class="teal-line"></div>
+        <p class="sec-sub" style="margin-bottom:36px">Fill the form or reach us directly. We respond within 2 hours
+          during clinic hours.</p>
+        <div class="reach-list">
+          <a href="tel:+917396141819" class="reach-item">
+            <div class="ri-icon">&#x1F4DE;</div>
+            <div>
+              <div class="ri-label">Call Us</div>
+              <div class="ri-val">+91 7396141819</div>
+            </div>
+          </a>
+          <a href="https://wa.me/917396141819" target="_blank" class="reach-item">
+            <div class="ri-icon">&#x1F4AC;</div>
+            <div>
+              <div class="ri-label">WhatsApp</div>
+              <div class="ri-val">Chat with us instantly</div>
+            </div>
+          </a>
+          <a href="mailto:harihara131438@gmail.com" target="_blank" class="reach-item">
+            <div class="ri-icon">&#x2709;</div>
+            <div>
+              <div class="ri-label">Email</div>
+              <div class="ri-val">harihara131438@gmail.com</div>
+            </div>
+          </a>
+          <div class="reach-item" style="cursor:default">
+            <div class="ri-icon">&#x1F4CD;</div>
+            <div>
+              <div class="ri-label">Location</div>
+              <div class="ri-val">Kakinada, Andhra Pradesh</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="fg">
-        <label>Select Doctor</label>
-        <select>
-          <option value="">Choose a doctor...</option>
-          <option>Dr. Arjun Mehta — General Medicine</option>
-          <option>Dr. Priya Sharma — Child &amp; Family Care</option>
-          <option>Dr. Ravi Kumar — Internal Medicine</option>
-        </select>
-      </div>
-      <div class="frow">
-        <div class="fg"><label>Preferred Date</label><input type="date"></div>
+
+      <div class="appt-form-wrap">
+        <div class="form-title">Request Appointment</div>
+        <div class="form-sub">We'll confirm your slot within 2 hours &#x23F0;</div>
+        <div class="frow">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Ravi"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Kumar"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+        </div>
         <div class="fg">
-          <label>Preferred Time</label>
+          <label>Select Doctor</label>
           <select>
-            <option>Morning (9am – 12pm)</option>
-            <option>Afternoon (12pm – 4pm)</option>
-            <option>Evening (4pm – 7pm)</option>
+            <option value="">Choose a doctor...</option>
+            <option>Dr. Arjun Mehta — General Medicine</option>
+            <option>Dr. Priya Sharma — Child &amp; Family Care</option>
+            <option>Dr. Ravi Kumar — Internal Medicine</option>
           </select>
         </div>
+        <div class="frow">
+          <div class="fg"><label>Preferred Date</label><input type="date"></div>
+          <div class="fg">
+            <label>Preferred Time</label>
+            <select>
+              <option>Morning (9am – 12pm)</option>
+              <option>Afternoon (12pm – 4pm)</option>
+              <option>Evening (4pm – 7pm)</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Reason for Visit</label><textarea placeholder="Describe your symptoms..."></textarea>
+        </div>
+        <button class="btn-form-submit">Confirm Appointment &#x2192;</button>
       </div>
-      <div class="fg"><label>Reason for Visit</label><textarea placeholder="Describe your symptoms..."></textarea></div>
-      <button class="btn-form-submit">Confirm Appointment &#x2192;</button>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <span class="foot-logo">Life<span>Care</span> Clinic</span>
-  <p>&copy; 2026 LifeCare Clinic. All rights reserved.</p>
-  <span class="foot-credit">Built by SaiWebStudio</span>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">Life<span>Care</span> Clinic</span>
+    <p>&copy; 2026 LifeCare Clinic. All rights reserved.</p>
+    <span class="foot-credit">Built by SaiWebStudio</span>
+  </footer>
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/917396141819" target="_blank" class="wa-btn">&#x1F4AC;</a>
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/917396141819" target="_blank" class="wa-btn">&#x1F4AC;</a>
 
-<script>
-// Header shadow on scroll
-window.addEventListener('scroll', function() {
-  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
-});
+  <script>
+    // Header shadow on scroll
+    window.addEventListener('scroll', function () {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+    });
 
-// Scroll reveal
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.08 });
+    // Scroll reveal
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08 });
 
-document.querySelectorAll('.svc-card, .doc-card, .reach-item').forEach(function(el) {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(22px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
-});
-</script>
+    document.querySelectorAll('.svc-card, .doc-card, .reach-item').forEach(function (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
 
 </body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeCare Clinic | Premium Family Healthcare — Kakinada</title>
+  <meta name="description"
+    content="LifeCare Clinic — Trusted family healthcare with experienced doctors. Book your appointment today in Kakinada.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off: #f7f9fb;
+      --off2: #eef2f6;
+      --teal: #0d7377;
+      --teal2: #14a0a5;
+      --teal-light: #e6f4f4;
+      --teal-mid: rgba(13, 115, 119, 0.1);
+      --text: #1a2533;
+      --muted: #6b7a8d;
+      --soft: #a0aab4;
+      --border: #e2e8ef;
+      --shadow: rgba(13, 115, 119, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--off);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--teal2);
+      border-radius: 4px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 24px rgba(13, 115, 119, 0.08);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--teal), var(--teal2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .logo-name span {
+      color: var(--teal);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    nav a:not(.btn-appt):hover {
+      color: var(--teal);
+      background: var(--teal-light);
+    }
+
+    .btn-appt {
+      background: var(--teal);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(13, 115, 119, 0.3);
+    }
+
+    .btn-appt:hover {
+      background: var(--teal2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(13, 115, 119, 0.4);
+      color: #fff !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 60px 60px;
+      gap: 60px;
+      background: var(--off);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* BG DECORATION */
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13, 115, 119, 0.07), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20, 160, 165, 0.05), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-light);
+      border: 1px solid rgba(13, 115, 119, 0.2);
+      color: var(--teal);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: slideIn 0.6s ease both;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--teal2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+
+      50% {
+        transform: scale(0.6);
+        opacity: 0.5
+      }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      animation: slideIn 0.6s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 460px;
+      font-weight: 400;
+      margin-bottom: 36px;
+      animation: slideIn 0.6s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: slideIn 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.25s;
+      box-shadow: 0 6px 24px rgba(13, 115, 119, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(13, 115, 119, 0.45);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--teal);
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--teal);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ghost:hover {
+      background: var(--teal);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(13, 115, 119, 0.3);
+    }
+
+    /* HERO STATS ROW */
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 4px 20px var(--shadow);
+      animation: slideIn 0.6s 0.4s ease both;
+    }
+
+    .hs {
+      flex: 1;
+      padding: 20px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .hs:last-child {
+      border-right: none;
+    }
+
+    .hs:hover {
+      background: var(--teal-light);
+    }
+
+    .hs-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--teal);
+      display: block;
+      line-height: 1;
+    }
+
+    .hs-lbl {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 4px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+
+    /* HERO RIGHT IMAGE */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      animation: slideIn 0.7s 0.2s ease both;
+    }
+
+    .hero-img-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      height: 520px;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(13, 115, 119, 0.2);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(13, 115, 119, 0.3) 100%);
+    }
+
+    /* FLOATING CARD */
+    .float-card {
+      position: absolute;
+      bottom: 28px;
+      left: -30px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+      min-width: 200px;
+    }
+
+    .fc-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .fc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .fc-lbl {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .float-card2 {
+      position: absolute;
+      top: 40px;
+      right: -24px;
+      background: var(--teal);
+      border-radius: 14px;
+      padding: 14px 18px;
+      z-index: 2;
+      color: #fff;
+      box-shadow: 0 12px 40px rgba(13, 115, 119, 0.35);
+    }
+
+    .fc2-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      opacity: 0.8;
+      margin-bottom: 4px;
+    }
+
+    .fc2-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* SECTION COMMONS */
+    section {
+      padding: 100px 60px;
+    }
+
+    .sec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sec-tag::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .sec-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    /* SERVICES */
+    #services {
+      background: var(--white);
+    }
+
+    .svc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .svc-card {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 34px 28px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+    }
+
+    .svc-card:hover {
+      background: var(--white);
+      border-color: rgba(13, 115, 119, 0.25);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px var(--shadow);
+    }
+
+    .svc-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .svc-ico {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .svc-card:hover .svc-ico {
+      background: var(--teal);
+      transform: scale(1.08);
+    }
+
+    .svc-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .svc-card p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .svc-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--teal);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 16px;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all 0.3s;
+    }
+
+    .svc-card:hover .svc-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* DOCTORS */
+    #doctors {
+      background: var(--off);
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .doc-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid var(--border);
+    }
+
+    .doc-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(13, 115, 119, 0.15);
+      border-color: rgba(13, 115, 119, 0.2);
+    }
+
+    .doc-photo {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+      background: var(--teal-light);
+    }
+
+    .doc-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.5s;
+      filter: saturate(0.85);
+    }
+
+    .doc-card:hover .doc-photo img {
+      transform: scale(1.04);
+      filter: saturate(1);
+    }
+
+    .doc-spec-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(13, 115, 119, 0.85), transparent);
+      padding: 16px 20px 12px;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .doc-info {
+      padding: 22px;
+    }
+
+    .doc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .doc-qual {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .doc-tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dtag {
+      background: var(--teal-light);
+      color: var(--teal);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* APPOINTMENT */
+    #appointment {
+      background: var(--white);
+    }
+
+    .appt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .appt-left {}
+
+    .appt-left .sec-sub {
+      margin-bottom: 40px;
+    }
+
+    .reach-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .reach-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: var(--off);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+    }
+
+    .reach-item:hover {
+      background: var(--teal-light);
+      border-color: rgba(13, 115, 119, 0.3);
+      transform: translateX(4px);
+    }
+
+    .reach-item:hover .ri-label {
+      color: var(--teal);
+    }
+
+    .reach-item:hover .ri-val {
+      color: var(--teal);
+    }
+
+    .ri-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: background 0.25s;
+    }
+
+    .reach-item:hover .ri-icon {
+      background: var(--teal);
+    }
+
+    .ri-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .ri-val {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* FORM */
+    .appt-form-wrap {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: 0 8px 40px var(--shadow);
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .form-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .frow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .fg {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .fg label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .fg input,
+    .fg select,
+    .fg textarea {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      outline: none;
+      transition: all 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .fg input::placeholder,
+    .fg textarea::placeholder {
+      color: var(--soft);
+    }
+
+    .fg input:focus,
+    .fg select:focus,
+    .fg textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(13, 115, 119, 0.08);
+    }
+
+    .fg select option {
+      background: var(--white);
+    }
+
+    .fg textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .btn-form-submit {
+      width: 100%;
+      background: var(--teal);
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: 0.03em;
+      transition: all 0.25s;
+      box-shadow: 0 6px 24px rgba(13, 115, 119, 0.3);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-form-submit:hover {
+      background: var(--teal2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(13, 115, 119, 0.45);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .foot-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .foot-logo span {
+      color: var(--teal2);
+    }
+
+    footer p {
+      font-size: 0.82rem;
+    }
+
+    .foot-credit {
+      font-size: 0.78rem;
+      color: var(--teal2);
+      font-weight: 600;
+    }
+
+    /* WHATSAPP */
+    .wa-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: bob 3s ease-in-out infinite;
+    }
+
+    .wa-btn:hover {
+      animation: none;
+      transform: scale(1.12);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.55);
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-6px)
+      }
+    }
+
+    /* DIVIDER LINE */
+    .teal-line {
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal2));
+      border-radius: 2px;
+      margin: 16px 0 24px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      header {
+        padding: 0 24px;
+      }
+
+      section {
+        padding: 70px 24px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 60px;
+        gap: 40px;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .doc-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .appt-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media(max-width:600px) {
+      nav a:not(.btn-appt) {
+        display: none;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+      }
+
+      .hs {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .frow {
+        grid-template-columns: 1fr;
+      }
+
+      .appt-form-wrap {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <a href="#" class="logo-wrap">
+      <div class="logo-mark">LC</div>
+      <span class="logo-name">Life<span>Care</span></span>
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#appointment">Contact</a>
+      <a href="#appointment" class="btn-appt">Book Appointment</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-pill"><span class="pill-dot"></span> Trusted Family Healthcare</div>
+      <h1>Your Health,<br>Our <em>Priority</em></h1>
+      <p class="hero-desc">Expert medical care for every member of your family — delivered with compassion, precision
+        and the highest standards of modern medicine.</p>
+      <div class="hero-btns">
+        <a href="#appointment" class="btn-primary">Book Appointment &#x2192;</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><span class="hs-num">15+</span><span class="hs-lbl">Years of Care</span></div>
+        <div class="hs"><span class="hs-num">8k+</span><span class="hs-lbl">Patients</span></div>
+        <div class="hs"><span class="hs-num">12</span><span class="hs-lbl">Specialists</span></div>
+        <div class="hs"><span class="hs-num">98%</span><span class="hs-lbl">Satisfaction</span></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=900&q=85" alt="LifeCare Clinic doctor">
+        <div class="float-card">
+          <div class="fc-icon">&#x1F4C5;</div>
+          <div>
+            <div class="fc-num">Today</div>
+            <div class="fc-lbl">Slots Available</div>
+          </div>
+        </div>
+        <div class="float-card2">
+          <div class="fc2-title">Response Time</div>
+          <div class="fc2-val">Under 2hrs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="svc-header">
+      <div>
+        <div class="sec-tag">What We Offer</div>
+        <h2 class="sec-title">Medical Services</h2>
+        <div class="teal-line"></div>
+      </div>
+      <p class="sec-sub" style="max-width:380px">Comprehensive healthcare under one roof — from preventive care to
+        specialized treatment.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-ico">&#x1FA7A;</div>
+        <h3>General Consultation</h3>
+        <p>Comprehensive diagnosis and treatment for common illnesses and chronic health conditions.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F9EC;</div>
+        <h3>Preventive Care</h3>
+        <p>Vaccinations, screenings and lifestyle guidance to keep your family healthy year-round.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;</div>
+        <h3>Family Medicine</h3>
+        <p>Dedicated care for every stage of life — newborns to seniors — all under one trusted roof.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F9E0;</div>
+        <h3>Mental Wellness</h3>
+        <p>Counselling and mental health support for stress, anxiety and emotional wellbeing.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F489;</div>
+        <h3>Lab & Diagnostics</h3>
+        <p>In-house pathology, blood work and diagnostics with fast, accurate on-site results.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico">&#x1F3E5;</div>
+        <h3>Emergency Care</h3>
+        <p>Prompt attention for urgent medical needs with experienced staff and same-day appointments.</p>
+        <span class="svc-arrow">Learn more &#x2192;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section id="doctors">
+    <div class="doc-header">
+      <div>
+        <div class="sec-tag">Meet the Team</div>
+        <h2 class="sec-title">Our Expert Doctors</h2>
+        <div class="teal-line"></div>
+      </div>
+      <p class="sec-sub" style="max-width:380px">Highly qualified, compassionate physicians dedicated to your wellbeing
+        and long-term health.</p>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=85" alt="Dr. Arjun Mehta">
+          <div class="doc-spec-bar">General Medicine</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Arjun Mehta</div>
+          <div class="doc-qual">MBBS, MD &mdash; 14 years experience</div>
+          <div class="doc-tag-row">
+            <span class="dtag">General Medicine</span>
+            <span class="dtag">Lead Physician</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=85" alt="Dr. Priya Sharma">
+          <div class="doc-spec-bar">Child & Family Care</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Priya Sharma</div>
+          <div class="doc-qual">MBBS, DCH &mdash; 10 years experience</div>
+          <div class="doc-tag-row">
+            <span class="dtag">Pediatrics</span>
+            <span class="dtag">Family Care</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-photo">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=85" alt="Dr. Ravi Kumar">
+          <div class="doc-spec-bar">Internal Medicine</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Ravi Kumar</div>
+          <div class="doc-qual">MBBS, DNB &mdash; 9 years experience</div>
+          <div class="doc-tag-row">
+            <span class="dtag">Internal Medicine</span>
+            <span class="dtag">Diagnostics</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- APPOINTMENT -->
+  <section id="appointment">
+    <div class="appt-grid">
+      <div class="appt-left">
+        <div class="sec-tag">Get In Touch</div>
+        <h2 class="sec-title">Book Your Appointment</h2>
+        <div class="teal-line"></div>
+        <p class="sec-sub" style="margin-bottom:36px">Fill the form or reach us directly. We respond within 2 hours
+          during clinic hours.</p>
+        <div class="reach-list">
+          <a href="tel:+917396141819" class="reach-item">
+            <div class="ri-icon">&#x1F4DE;</div>
+            <div>
+              <div class="ri-label">Call Us</div>
+              <div class="ri-val">+91 7396141819</div>
+            </div>
+          </a>
+          <a href="https://wa.me/917396141819" target="_blank" class="reach-item">
+            <div class="ri-icon">&#x1F4AC;</div>
+            <div>
+              <div class="ri-label">WhatsApp</div>
+              <div class="ri-val">Chat with us instantly</div>
+            </div>
+          </a>
+          <a href="mailto:harihara131438@gmail.com" target="_blank" class="reach-item">
+            <div class="ri-icon">&#x2709;</div>
+            <div>
+              <div class="ri-label">Email</div>
+              <div class="ri-val">harihara131438@gmail.com</div>
+            </div>
+          </a>
+          <div class="reach-item" style="cursor:default">
+            <div class="ri-icon">&#x1F4CD;</div>
+            <div>
+              <div class="ri-label">Location</div>
+              <div class="ri-val">Kakinada, Andhra Pradesh</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="appt-form-wrap">
+        <div class="form-title">Request Appointment</div>
+        <div class="form-sub">We'll confirm your slot within 2 hours &#x23F0;</div>
+        <div class="frow">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Ravi"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Kumar"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+        </div>
+        <div class="fg">
+          <label>Select Doctor</label>
+          <select>
+            <option value="">Choose a doctor...</option>
+            <option>Dr. Arjun Mehta — General Medicine</option>
+            <option>Dr. Priya Sharma — Child &amp; Family Care</option>
+            <option>Dr. Ravi Kumar — Internal Medicine</option>
+          </select>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Preferred Date</label><input type="date"></div>
+          <div class="fg">
+            <label>Preferred Time</label>
+            <select>
+              <option>Morning (9am – 12pm)</option>
+              <option>Afternoon (12pm – 4pm)</option>
+              <option>Evening (4pm – 7pm)</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Reason for Visit</label><textarea placeholder="Describe your symptoms..."></textarea>
+        </div>
+        <button class="btn-form-submit">Confirm Appointment &#x2192;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">Life<span>Care</span> Clinic</span>
+    <p>&copy; 2026 LifeCare Clinic. All rights reserved.</p>
+    <span class="foot-credit">Built by SaiWebStudio</span>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/917396141819" target="_blank" class="wa-btn">&#x1F4AC;</a>
+
+  <script>
+    // Header shadow on scroll
+    window.addEventListener('scroll', function () {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll reveal
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.svc-card, .doc-card, .reach-item').forEach(function (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+
 </html>
