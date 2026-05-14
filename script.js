@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Cursor hover effects
-        const hoverElements = document.querySelectorAll('a, button, .magnetic-btn, .project-card, .service-card');
+        const hoverElements = document.querySelectorAll('a, button, .magnetic-btn, .project-card, .service-card, .pricing-card');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorOutline.style.width = '60px';

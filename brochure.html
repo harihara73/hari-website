@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HHS Technologies | Full Corporate Brochure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --deep-bg: #020617;
+            --dark-surface: #0f172a;
+            --text-main: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --border-glow: rgba(0, 243, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #111;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .brochure-page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--deep-bg);
+            margin: 20px auto;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+            border: 1px solid #222;
+            overflow: hidden;
+        }
+
+        @media print {
+            .brochure-page { margin: 0; box-shadow: none; border: none; }
+        }
+
+        .accent-line {
+            width: 80px;
+            height: 4px;
+            background: var(--neon-blue);
+            margin: 20px 0;
+            border-radius: 2px;
+        }
+
+        .center-line { margin: 20px auto; }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        /* PAGE 1: COVER */
+        .cover-hero {
+            height: 70%;
+            background: url('brochure_hero.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, var(--deep-bg) 100%); }
+        .cover-content { position: relative; z-index: 2; text-align: center; }
+        .cover-content h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4rem; line-height: 1; }
+        .cover-content h1 span { color: var(--neon-blue); display: block; }
+        .cover-tagline { font-size: 1.2rem; color: var(--neon-blue); letter-spacing: 5px; font-weight: 600; text-transform: uppercase; margin-top: 20px; }
+
+        /* PAGE 2: ABOUT */
+        .page-content { padding: 80px 60px; flex-grow: 1; }
+        .full-img { width: 100%; height: 350px; object-fit: cover; border-radius: 20px; margin-bottom: 40px; border: 1px solid var(--border-glow); }
+
+        /* PAGE 3 & 4: SERVICES */
+        .service-grid-big { display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+        .service-item-big { background: var(--dark-surface); padding: 40px; border-radius: 25px; border-left: 5px solid var(--neon-blue); }
+        .service-item-big h4 { font-size: 2rem; color: var(--neon-blue); margin-bottom: 15px; }
+
+        /* PAGE 5: PROMISE */
+        .promise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .promise-card { background: var(--dark-surface); padding: 30px; border-radius: 20px; border: 1px dashed var(--border-glow); text-align: center; }
+        .promise-card h5 { font-size: 1.4rem; color: var(--neon-blue); margin-bottom: 10px; }
+        .promise-card p { font-size: 0.9rem; margin-bottom: 0; }
+
+        /* PAGE 6: CONTACT */
+        .footer-hero { height: 40%; background: url('brochure_footer.png') no-repeat center center; background-size: cover; position: relative; }
+        .footer-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(2, 6, 23, 0.9); padding: 60px; text-align: center; }
+        .contact-row { display: flex; gap: 60px; margin-top: 40px; }
+        .contact-box strong { color: var(--neon-blue); font-size: 1.2rem; display: block; margin-bottom: 10px; }
+        .contact-box span { font-size: 1.5rem; font-weight: 700; }
+        .final-url { font-size: 2.5rem; font-weight: 800; color: var(--neon-blue); margin-top: 50px; letter-spacing: 3px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <div class="brochure-page">
+        <div class="cover-hero">
+            <div class="hero-overlay"></div>
+            <div class="cover-content">
+                <h1>HHS<span>Technologies</span></h1>
+                <div class="accent-line center-line"></div>
+                <div class="cover-tagline">Future-Ready Digital Solutions</div>
+            </div>
+        </div>
+        <div class="page-content" style="text-align: center; padding-top: 20px;">
+            <p style="font-size: 1.3rem; max-width: 80%; margin: 0 auto;">"Innovating at the intersection of human intelligence and machine precision."</p>
+        </div>
+    </div>
+
+    <!-- PAGE 2: ABOUT US -->
+    <div class="brochure-page">
+        <div class="page-content">
+            <div class="sec-tag" style="color: var(--neon-blue); letter-spacing: 3px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">01. About Us</div>
+            <h2>The Future,<span>Engineered.</span></h2>
+            <div class="accent-line"></div>
+            <img src="brochure_about.png" alt="About HHS" class="full-img">
+            <p>HHS Technologies is a premium technology partner dedicated to building high-performance digital ecosystems. We specialize in transforming complex business visions into scalable, AI-driven realities.</p>
+            <p>Our philosophy is simple: we don't just build software; we engineer success. By combining modern aesthetics with robust back-end architecture, we ensure your business stays ahead of the curve in an ever-evolving digital landscape.</p>
+        </div>
+    </div>
+
+    <!-- PAGE 3: CORE SERVICES I -->
+    <div class="brochure-page">
+        <div class="page-content">
+            <div class="sec-tag" style="color: var(--neon-blue); letter-spacing: 3px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">02. Expertise</div>
+            <h2>Intelligent<span>Solutions.</span></h2>
+            <div class="accent-line"></div>
+            <div class="service-grid-big">
+                <div class="service-item-big">
+                    <h4>Delivery Platforms</h4>
+                    <p>Complete end-to-end delivery ecosystems. Featuring real-time GPS tracking, automated partner matching, and sophisticated admin control panels. Built for speed and absolute reliability.</p>
+                </div>
+                <div class="service-item-big">
+                    <h4>AI & Automation</h4>
+                    <p>Harness the power of machine learning. From custom chatbots to predictive analytics and business process automation, we integrate AI into the core of your operations.</p>
+                </div>
+            </div>
+            <img src="brochure_tech.png" alt="Tech Detail" class="full-img" style="height: 200px; margin-top: 40px;">
+        </div>
+    </div>
+
+    <!-- PAGE 4: CORE SERVICES II -->
+    <div class="brochure-page">
+        <div class="page-content">
+            <div class="sec-tag" style="color: var(--neon-blue); letter-spacing: 3px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">03. Business Growth</div>
+            <h2>Scalable<span>Impact.</span></h2>
+            <div class="accent-line"></div>
+            <img src="brochure_impact.png" alt="Global Impact" class="full-img">
+            <div class="service-grid-big" style="margin-top: 0;">
+                <div class="service-item-big">
+                    <h4>Next-Gen E-Commerce</h4>
+                    <p>Beyond simple shopping carts. We create immersive marketplace experiences with multi-vendor support, advanced inventory management, and secure QR-based payment flows.</p>
+                </div>
+                <div class="service-item-big">
+                    <h4>Custom Business Apps</h4>
+                    <p>Tailor-made internal tools designed for your specific workflow. We build the software that your business actually needs to thrive, not just generic solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: OUR COMMITMENT -->
+    <div class="brochure-page">
+        <div class="page-content">
+            <div class="sec-tag" style="color: var(--neon-blue); letter-spacing: 3px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">04. Our Promise</div>
+            <h2>Why Choose<span>Us?</span></h2>
+            <div class="accent-line"></div>
+            <p>At HHS Technologies, we believe in a partnership based on performance and transparency. Our commitment to your success is built on these six pillars:</p>
+            
+            <div class="promise-grid">
+                <div class="promise-card">
+                    <h5>Reasonable Cost</h5>
+                    <p>Premium quality solutions at competitive pricing.</p>
+                </div>
+                <div class="promise-card">
+                    <h5>Fast Delivery</h5>
+                    <p>Optimized workflows for record launch times.</p>
+                </div>
+                <div class="promise-card">
+                    <h5>Reliable Sites</h5>
+                    <p>99.9% uptime with scalable architecture.</p>
+                </div>
+                <div class="promise-card">
+                    <h5>Fast Response</h5>
+                    <p>Immediate communication when you need it.</p>
+                </div>
+                <div class="promise-card">
+                    <h5>In-Time Delivery</h5>
+                    <p>Deadlines are sacred. We launch on time.</p>
+                </div>
+                <div class="promise-card">
+                    <h5>Fast Assistance</h5>
+                    <p>Proactive support if any issues arise.</p>
+                </div>
+            </div>
+            <img src="brochure_workflow.png" alt="Workflow" class="full-img" style="height: 200px; margin-top: 40px;">
+        </div>
+    </div>
+
+    <!-- PAGE 6: CONTACT -->
+    <div class="brochure-page">
+        <div class="page-content" style="flex-grow: 0; padding-bottom: 0;">
+            <div class="sec-tag" style="color: var(--neon-blue); letter-spacing: 3px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">05. Get Started</div>
+            <h2>Let's Build<span>The Future.</span></h2>
+            <div class="accent-line"></div>
+            <p>Ready to transform your business with cutting-edge digital solutions? Reach out today for a consultation and let's discuss how we can engineer your success.</p>
+        </div>
+        <div class="footer-hero">
+            <div class="footer-content">
+                <div class="contact-row">
+                    <div class="contact-box">
+                        <strong>Call Us</strong>
+                        <span>+91 7396141819</span>
+                    </div>
+                    <div class="contact-box">
+                        <strong>Email</strong>
+                        <span>hhstechnologies@gmail.com</span>
+                    </div>
+                </div>
+                <div class="final-url">WWW.HHSTECHNOLOGIES.IN</div>
+                <p style="margin-top: 40px; color: var(--neon-blue);">AI Solutions, Engineered for Your Success.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
