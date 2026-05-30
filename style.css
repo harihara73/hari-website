@@ -1,19 +1,31 @@
 :root {
-    /* Color Palette - Dark Futuristic */
-    --bg-dark: #050508;
-    --bg-panel: rgba(15, 15, 25, 0.6);
-    --neon-blue: #00f0ff;
-    --neon-purple: #8a2be2;
-    --text-main: #f0f0f0;
-    --text-muted: #a0a0b0;
+    /* Color Palette - Radiant Futuristic Light */
+    --bg-dark: #f8fafc;
+    --bg-panel: rgba(255, 255, 255, 0.7);
+    --bg-nav: rgba(248, 250, 252, 0.85);
+    --bg-nav-mobile: rgba(248, 250, 252, 0.95);
+    --neon-blue: #0066FF;
+    --neon-purple: #7c3aed;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --card-bg: rgba(255, 255, 255, 0.55);
+    --visual-bg: rgba(15, 23, 42, 0.03);
+    --mockup-border: #cbd5e1;
+    --mockup-bg: #f8fafc;
+    --placeholder-bg: linear-gradient(45deg, #f1f5f9, #cbd5e1);
+    --featured-bg: rgba(124, 90, 237, 0.05);
+    --input-bg: rgba(255, 255, 255, 0.8);
+    --footer-bg: rgba(241, 245, 249, 0.8);
+    --logo-container-border: rgba(0, 102, 255, 0.15);
+    --logo-container-bg: rgba(255, 255, 255, 0.5);
     
     /* Typography */
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Outfit', sans-serif;
     
     /* Glassmorphism */
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
     --glass-blur: blur(12px);
 }
 
@@ -58,7 +70,7 @@ body {
     border-radius: 50%;
     filter: blur(100px);
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.15;
     pointer-events: none;
 }
 
@@ -195,7 +207,7 @@ nav {
     top: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(5, 5, 8, 0.8);
+    background: var(--bg-nav);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--glass-border);
 }
@@ -358,9 +370,9 @@ nav {
     justify-content: center;
     align-items: center;
     position: relative;
-    border: 1px solid rgba(0, 240, 255, 0.1);
+    border: 1px solid var(--logo-container-border);
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--logo-container-bg);
     box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05);
 }
 
@@ -433,7 +445,7 @@ nav {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 2rem;
@@ -575,7 +587,7 @@ nav {
 
 .project-visual {
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--visual-bg);
     height: 100%;
     display: flex;
     align-items: center;
@@ -584,15 +596,15 @@ nav {
 
 .browser-mockup {
     width: 100%;
-    background: #111;
+    background: var(--mockup-bg);
     border-radius: 8px;
-    border: 1px solid #333;
+    border: 1px solid var(--mockup-border);
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .mockup-header {
-    background: #222;
+    background: var(--mockup-border);
     padding: 10px;
     display: flex;
     gap: 6px;
@@ -608,7 +620,7 @@ nav {
 .mockup-body {
     position: relative;
     height: 300px;
-    background: #111;
+    background: var(--mockup-bg);
     overflow: hidden;
 }
 
@@ -655,7 +667,7 @@ nav {
 
 .placeholder-img {
     height: 300px;
-    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    background: var(--placeholder-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -691,7 +703,7 @@ nav {
 
 .pricing-card.featured {
     border-color: var(--neon-purple);
-    background: rgba(138, 43, 226, 0.05);
+    background: var(--featured-bg);
     box-shadow: 0 10px 30px rgba(138, 43, 226, 0.15);
 }
 
@@ -722,7 +734,7 @@ nav {
 .pricing-header h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    color: #fff;
+    color: var(--text-main);
 }
 
 .price {
@@ -757,7 +769,7 @@ nav {
 
 .pricing-features li {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--glass-border);
     font-size: 0.95rem;
     color: var(--text-main);
     display: flex;
@@ -810,10 +822,10 @@ nav {
 .contact-form input, .contact-form textarea {
     width: 100%;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--input-bg);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
-    color: #fff;
+    color: var(--text-main);
     font-family: var(--font-body);
     transition: border-color 0.3s;
 }
@@ -828,7 +840,7 @@ nav {
 footer {
     padding: 40px 0;
     border-top: 1px solid var(--glass-border);
-    background: rgba(0,0,0,0.5);
+    background: var(--footer-bg);
 }
 .footer-content {
     display: flex;
@@ -920,7 +932,7 @@ footer {
         right: 0;
         top: 0;
         height: 100vh;
-        background: rgba(5, 5, 8, 0.95);
+        background: var(--bg-nav-mobile);
         backdrop-filter: blur(15px);
         flex-direction: column;
         align-items: center;
