@@ -81,14 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('mouseenter', () => {
                 cursorOutline.style.width = '60px';
                 cursorOutline.style.height = '60px';
-                cursorOutline.style.backgroundColor = 'rgba(0, 240, 255, 0.05)';
-                cursorOutline.style.borderColor = 'rgba(0, 240, 255, 0.5)';
+                cursorOutline.style.backgroundColor = 'rgba(201, 168, 76, 0.08)';
+                cursorOutline.style.borderColor = 'rgba(201, 168, 76, 0.6)';
             });
             el.addEventListener('mouseleave', () => {
                 cursorOutline.style.width = '40px';
                 cursorOutline.style.height = '40px';
                 cursorOutline.style.backgroundColor = 'transparent';
-                cursorOutline.style.borderColor = 'rgba(138, 43, 226, 0.5)';
+                cursorOutline.style.borderColor = 'rgba(201, 168, 76, 0.4)';
             });
         });
     }
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "value": 40,
                     "density": { "enable": true, "value_area": 800 }
                 },
-                "color": { "value": ["#0066FF", "#7c3aed", "#475569"] },
+                "color": { "value": ["#C9A84C", "#E8D16A", "#1A1A2E"] },
                 "shape": { "type": "circle" },
                 "opacity": {
                     "value": 0.2,
@@ -189,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 "line_linked": {
                     "enable": true,
                     "distance": 150,
-                    "color": "#0066FF",
-                    "opacity": 0.08,
+                    "color": "#C9A84C",
+                    "opacity": 0.09,
                     "width": 1
                 },
                 "move": {
