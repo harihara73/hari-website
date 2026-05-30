@@ -3,108 +3,129 @@ document.addEventListener('DOMContentLoaded', () => {
     AOS.init({
         once: true,
         offset: 50,
-        duration: 800,
+        duration: 700,
         easing: 'ease-out-cubic',
     });
 
-    // Animate Counters
+    // ── Counter Animation (requestAnimationFrame, no DOM read in loop) ──────────
     const counters = document.querySelectorAll('.counter');
-    const speed = 200; // The lower the slower
 
-    const animateCounters = () => {
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 1500; // ms
+        let startTime = null;
+        let animating = false;
 
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target;
-                }
-            };
+        const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // ease-out
+            const eased = 1 - Math.pow(1 - progress, 3);
+            counter.textContent = Math.floor(eased * target);
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                counter.textContent = target;
+            }
+        };
 
-            // Observer to start animation when in view
-            const observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting) {
-                    updateCount();
-                    observer.disconnect();
-                }
-            }, { threshold: 0.5 });
-            
-            observer.observe(counter);
-        });
-    };
-    
-    animateCounters();
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !animating) {
+                animating = true;
+                requestAnimationFrame(step);
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
 
-    // Magnetic Button Effect
+        observer.observe(counter);
+    });
+
+    // ── Magnetic Button Effect (cache rect, avoid layout thrash) ────────────────
     const magneticBtns = document.querySelectorAll('.magnetic-btn');
-    
+
     magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', function(e) {
-            const position = btn.getBoundingClientRect();
-            const x = e.pageX - position.left - position.width / 2;
-            const y = e.pageY - position.top - position.height / 2;
-            
-            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px)`;
-        });
-        
-        btn.addEventListener('mouseout', function(e) {
+        let rect = btn.getBoundingClientRect();
+
+        // Update rect only on resize (not every mousemove)
+        const updateRect = () => { rect = btn.getBoundingClientRect(); };
+        window.addEventListener('resize', updateRect, { passive: true });
+
+        btn.addEventListener('mousemove', (e) => {
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.25}px, ${y * 0.4}px)`;
+        }, { passive: true });
+
+        btn.addEventListener('mouseleave', () => {
             btn.style.transform = 'translate(0px, 0px)';
+            // Refresh rect after leaving
+            updateRect();
         });
     });
 
-    // Custom Cursor
+    // ── Custom Cursor (rAF-based, GPU-composited via transform) ─────────────────
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
 
-    if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
+    if (cursorDot && cursorOutline && window.matchMedia('(pointer: fine)').matches) {
+        let mouseX = 0, mouseY = 0;
+        let outlineX = 0, outlineY = 0;
+        let rafId = null;
+
         window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Dot follows instantly via transform (GPU layer)
+            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+
+            if (!rafId) {
+                rafId = requestAnimationFrame(animateOutline);
+            }
+        }, { passive: true });
+
+        const lerpFactor = 0.18;
+
+        function animateOutline() {
+            outlineX += (mouseX - outlineX) * lerpFactor;
+            outlineY += (mouseY - outlineY) * lerpFactor;
+
+            cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
+
+            const dx = mouseX - outlineX;
+            const dy = mouseY - outlineY;
+            // Keep looping only while cursor is still moving
+            if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+                rafId = requestAnimationFrame(animateOutline);
+            } else {
+                rafId = null;
+            }
+        }
 
         // Cursor hover effects
         const hoverElements = document.querySelectorAll('a, button, .magnetic-btn, .project-card, .service-card, .pricing-card');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursorOutline.style.width = '60px';
-                cursorOutline.style.height = '60px';
-                cursorOutline.style.backgroundColor = 'rgba(201, 168, 76, 0.08)';
-                cursorOutline.style.borderColor = 'rgba(201, 168, 76, 0.6)';
+                cursorOutline.classList.add('cursor-hover');
             });
             el.addEventListener('mouseleave', () => {
-                cursorOutline.style.width = '40px';
-                cursorOutline.style.height = '40px';
-                cursorOutline.style.backgroundColor = 'transparent';
-                cursorOutline.style.borderColor = 'rgba(201, 168, 76, 0.4)';
+                cursorOutline.classList.remove('cursor-hover');
             });
         });
     }
 
-    // Mobile Menu Toggle
+    // ── Mobile Menu Toggle ───────────────────────────────────────────────────────
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links li');
 
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            // Toggle Nav
             navLinks.classList.toggle('nav-active');
             document.body.classList.toggle('no-scroll');
+            menuToggle.classList.toggle('toggle');
 
-            // Animate Links
             navItems.forEach((link, index) => {
                 if (link.style.animation) {
                     link.style.animation = '';
@@ -112,12 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
                 }
             });
-
-            // Burger Animation
-            menuToggle.classList.toggle('toggle');
         });
 
-        // Close menu when clicking on a link
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('nav-active');
@@ -128,94 +145,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Escape Logo Interaction
+    // ── Hero Logo Escape Interaction ─────────────────────────────────────────────
     const heroLogo = document.querySelector('.hero-logo');
     const logoShifter = document.querySelector('.logo-shifter');
-    
+
     if (heroLogo && logoShifter) {
         let currentCorner = -1;
         let clickCount = 0;
-        
+
         heroLogo.addEventListener('click', () => {
             clickCount++;
-            
+
             if (clickCount % 4 === 0) {
-                // Return to middle on 4th click
-                logoShifter.style.transform = `translate(0, 0) scale(1) rotate(0deg)`;
+                logoShifter.style.transform = 'translate(0, 0) scale(1) rotate(0deg)';
                 currentCorner = -1;
             } else {
-                // Move to corners
-                const offset = 110; 
+                const offset = 110;
                 const positions = [
-                    { x: -offset, y: -offset }, // Top Left
-                    { x: offset, y: -offset },  // Top Right
-                    { x: offset, y: offset },   // Bottom Right
-                    { x: -offset, y: offset }   // Bottom Left
+                    { x: -offset, y: -offset },
+                    { x: offset, y: -offset },
+                    { x: offset, y: offset },
+                    { x: -offset, y: offset }
                 ];
 
                 let newCorner;
-                do {
-                    newCorner = Math.floor(Math.random() * 4);
-                } while (newCorner === currentCorner);
-                
+                do { newCorner = Math.floor(Math.random() * 4); }
+                while (newCorner === currentCorner);
+
                 currentCorner = newCorner;
                 const pos = positions[currentCorner];
-
                 logoShifter.style.transform = `translate(${pos.x}px, ${pos.y}px) scale(0.9) rotate(${Math.random() * 40 - 20}deg)`;
             }
         });
     }
 
-    // Initialize Particles.js
+    // ── Particles.js ────────────────────────────────────────────────────────────
     if (window.particlesJS) {
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 40,
-                    "density": { "enable": true, "value_area": 800 }
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 30, density: { enable: true, value_area: 900 } },
+                color: { value: ['#C9A84C', '#E8D16A', '#1A1A2E'] },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.18,
+                    random: true,
+                    anim: { enable: false }
                 },
-                "color": { "value": ["#C9A84C", "#E8D16A", "#1A1A2E"] },
-                "shape": { "type": "circle" },
-                "opacity": {
-                    "value": 0.2,
-                    "random": true,
-                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.05, "sync": false }
+                size: {
+                    value: 2.5,
+                    random: true,
+                    anim: { enable: false }
                 },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": { "enable": false }
+                line_linked: {
+                    enable: true,
+                    distance: 140,
+                    color: '#C9A84C',
+                    opacity: 0.07,
+                    width: 1
                 },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#C9A84C",
-                    "opacity": 0.09,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
+                move: {
+                    enable: true,
+                    speed: 0.7,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
                 }
             },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: false },
+                    resize: true
                 },
-                "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
-                    "push": { "particles_nb": 4 }
+                modes: {
+                    grab: { distance: 120, line_linked: { opacity: 0.35 } }
                 }
             },
-            "retina_detect": true
+            retina_detect: false
         });
     }
 });
