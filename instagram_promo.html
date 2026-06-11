@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HHS Technologies - Instagram Video Promo Maker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #1A1A2E;
+            --accent-gold: #C9A84C;
+            --accent-gold-light: #E8D16A;
+            --text-light: #FAFAF8;
+            --text-muted: #A0A0BA;
+            --square-w: 1080px;
+            --square-h: 1080px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0d0d15;
+            color: var(--text-light);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Dashboard UI controls */
+        .controls {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 12px;
+            padding: 15px 30px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            border-color: var(--accent-gold);
+            background: rgba(201, 168, 76, 0.15);
+        }
+
+        .btn-active {
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+            color: #1A1A2E;
+            border-color: transparent;
+        }
+
+        /* Container scale wrapper to fit viewport */
+        .canvas-scale-wrapper {
+            transform-origin: center top;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main Promo Canvas */
+        .promo-canvas {
+            width: 1080px;
+            height: 1080px;
+            background: var(--bg-dark);
+            border: 4px solid var(--accent-gold);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Layout modes */
+        .promo-canvas.mode-square {
+            width: 1080px;
+            height: 1080px;
+        }
+
+        .promo-canvas.mode-reels {
+            width: 1080px;
+            height: 1920px;
+        }
+
+        /* Background Effects on Canvas */
+        .canvas-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .canvas-grid {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .canvas-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+            opacity: 0.15;
+        }
+
+        /* Promo Scenes */
+        .scene {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scene.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Scene elements with animation delay support */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .active .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+        .delay-4 { transition-delay: 0.8s; }
+
+        /* Typography inside Canvas */
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .main-logo {
+            width: 160px;
+            height: 160px;
+            margin-bottom: 30px;
+            border-radius: 30px;
+            box-shadow: 0 0 40px rgba(201, 168, 76, 0.4);
+            border: 2px solid rgba(201, 168, 76, 0.4);
+            filter: sepia(1) saturate(180%) hue-rotate(5deg) brightness(1.1) contrast(1.1);
+        }
+
+        .promo-canvas.mode-reels .main-logo {
+            width: 220px;
+            height: 220px;
+        }
+
+        .brand-title {
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .brand-title span {
+            color: var(--accent-gold);
+        }
+
+        .brand-slogan {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Services Grid layout */
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .service-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            text-align: left;
+            backdrop-filter: blur(8px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(201, 168, 76, 0.1);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+        }
+
+        .service-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .service-info p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Pricing Card inside canvas */
+        .pricing-deck {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .promo-canvas.mode-reels .pricing-deck {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pricing-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            flex: 1;
+            max-width: 280px;
+            text-align: center;
+        }
+
+        .pricing-box.featured {
+            border-color: var(--accent-gold);
+            background: rgba(201, 168, 76, 0.05);
+            transform: scale(1.05);
+        }
+
+        .pricing-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .pricing-box .price {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .pricing-box .price span {
+            font-size: 0.9rem;
+            display: block;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Call To Action scene */
+        .contact-btn-promo {
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+            color: #1A1A2E;
+            padding: 16px 36px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 30px 0;
+            display: inline-block;
+        }
+
+        .promo-url {
+            font-size: 2.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(201,168,76,0.3);
+        }
+
+        .scene-heading {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .scene-subheading {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Adjustments for Reels Mode (9:16) */
+        .promo-canvas.mode-reels .scene {
+            padding: 60px;
+            justify-content: space-around;
+        }
+
+        .promo-canvas.mode-reels .brand-title {
+            font-size: 4.5rem;
+        }
+
+        .promo-canvas.mode-reels .scene-heading {
+            font-size: 4rem;
+        }
+
+        .promo-canvas.mode-reels .intro-text {
+            font-size: 2.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn btn-active" id="btn-square"><i class="fa-solid fa-square"></i> Square (1:1)</button>
+        <button class="btn" id="btn-reels"><i class="fa-solid fa-mobile-screen"></i> Reels/Story (9:16)</button>
+        <div style="width: 2px; height: 25px; background: rgba(255,255,255,0.2);"></div>
+        <button class="btn btn-active" id="btn-play"><i class="fa-solid fa-play"></i> Play Promo</button>
+        <button class="btn" id="btn-pause"><i class="fa-solid fa-pause"></i> Pause</button>
+        <button class="btn" id="btn-prev"><i class="fa-solid fa-backward-step"></i> Prev</button>
+        <button class="btn" id="btn-next"><i class="fa-solid fa-forward-step"></i> Next</button>
+    </div>
+
+    <div class="canvas-scale-wrapper" id="scale-wrapper">
+        <div class="promo-canvas mode-square" id="canvas">
+            
+            <!-- Background Graphics -->
+            <div class="canvas-bg">
+                <div class="canvas-grid"></div>
+                <div class="canvas-circle" style="top: -10%; left: -10%; width: 500px; height: 500px;"></div>
+                <div class="canvas-circle" style="bottom: -10%; right: -10%; width: 500px; height: 500px;"></div>
+            </div>
+
+            <!-- Scene 1: Welcome & Branding -->
+            <div class="scene active" id="scene-1">
+                <img src="assets/logo.png" alt="HHS Technologies" class="main-logo animate-in delay-1">
+                <h1 class="brand-title animate-in delay-2">HHS <span>Technologies</span></h1>
+                <div class="brand-slogan animate-in delay-3">AI Solutions, Engineered for Your Success</div>
+                <p class="intro-text animate-in delay-4">Building futuristic digital solutions and automation for modern businesses worldwide.</p>
+            </div>
+
+            <!-- Scene 2: Services Showcase -->
+            <div class="scene" id="scene-2">
+                <h2 class="scene-heading animate-in delay-1">What We Build</h2>
+                <div class="scene-subheading animate-in delay-2">High-performance digital products</div>
+                <div class="service-list">
+                    <div class="service-item animate-in delay-3">
+                        <div class="service-icon"><i class="fas fa-truck-fast"></i></div>
+                        <div class="service-info">
+                            <h3>Delivery Platforms</h3>
+                            <p>Swiggy/Zomato style platforms with real-time tracking.</p>
+                        </div>
+                    </div>
+                    <div class="service-item animate-in delay-4">
+                        <div class="service-icon"><i class="fas fa-store"></i></div>
+                        <div class="service-info">
+                            <h3>E-commerce & Marketplace</h3>
+                            <p>Scalable marketplace platforms and custom shop checkout applications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scene 3: Pricing Showcase -->
+            <div class="scene" id="scene-3">
+                <h2 class="scene-heading animate-in delay-1">Affordable Pricing</h2>
+                <div class="scene-subheading animate-in delay-2">Premium quality packages starting from</div>
+                
+                <div class="pricing-deck">
+                    <div class="pricing-box animate-in delay-3">
+                        <h3>Basic Plan</h3>
+                        <div class="price">₹5,000 <span>Starting from</span></div>
+                        <p style="color: var(--text-muted);">Perfect for startups</p>
+                    </div>
+                    <div class="pricing-box featured animate-in delay-4">
+                        <h3>Standard Plan</h3>
+                        <div class="price">₹8,000 <span>Starting from</span></div>
+                        <p style="color: var(--accent-gold);">Most Popular Plan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scene 4: Call To Action -->
+            <div class="scene" id="scene-4">
+                <img src="assets/logo.png" alt="HHS Technologies" class="main-logo animate-in delay-1" style="width: 100px; height: 100px; margin-bottom: 20px;">
+                <h2 class="scene-heading animate-in delay-2">Start Your Project Today</h2>
+                <div class="scene-subheading animate-in delay-3">Let's build something futuristic together.</div>
+                <div class="contact-btn-promo animate-in delay-4">Hire HHS Technologies</div>
+                <div class="promo-url animate-in delay-4">hhstechnologies.in</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const scaleWrapper = document.getElementById('scale-wrapper');
+        const btnSquare = document.getElementById('btn-square');
+        const btnReels = document.getElementById('btn-reels');
+        const btnPlay = document.getElementById('btn-play');
+        const btnPause = document.getElementById('btn-pause');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+
+        const scenes = document.querySelectorAll('.scene');
+        let currentSceneIdx = 0;
+        let isPlaying = true;
+        let intervalId = null;
+        const slideDuration = 4500; // Time in milliseconds per scene
+
+        // Layout Toggles
+        btnSquare.addEventListener('click', () => {
+            canvas.className = 'promo-canvas mode-square';
+            btnSquare.classList.add('btn-active');
+            btnReels.classList.remove('btn-active');
+            adjustScaling();
+        });
+
+        btnReels.addEventListener('click', () => {
+            canvas.className = 'promo-canvas mode-reels';
+            btnReels.classList.add('btn-active');
+            btnSquare.classList.remove('btn-active');
+            adjustScaling();
+        });
+
+        // Auto Scaling to fit preview window
+        function adjustScaling() {
+            const viewportH = window.innerHeight - 200;
+            const canvasH = canvas.offsetHeight;
+            const scale = Math.min(1, viewportH / canvasH);
+            scaleWrapper.style.transform = `scale(${scale})`;
+        }
+
+        window.addEventListener('resize', adjustScaling);
+        setTimeout(adjustScaling, 200);
+
+        // Slideshow controls
+        function showScene(idx) {
+            scenes.forEach(s => s.classList.remove('active'));
+            // Small timeout to allow transition reset
+            setTimeout(() => {
+                scenes[idx].classList.add('active');
+            }, 50);
+        }
+
+        function nextScene() {
+            currentSceneIdx = (currentSceneIdx + 1) % scenes.length;
+            showScene(currentSceneIdx);
+        }
+
+        function prevScene() {
+            currentSceneIdx = (currentSceneIdx - 1 + scenes.length) % scenes.length;
+            showScene(currentSceneIdx);
+        }
+
+        function startAutoplay() {
+            if (intervalId) clearInterval(intervalId);
+            isPlaying = true;
+            btnPlay.classList.add('btn-active');
+            btnPause.classList.remove('btn-active');
+            intervalId = setInterval(nextScene, slideDuration);
+        }
+
+        function stopAutoplay() {
+            isPlaying = false;
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+            btnPlay.classList.remove('btn-active');
+            btnPause.classList.add('btn-active');
+        }
+
+        btnPlay.addEventListener('click', startAutoplay);
+        btnPause.addEventListener('click', stopAutoplay);
+        btnPrev.addEventListener('click', () => {
+            stopAutoplay();
+            prevScene();
+        });
+        btnNext.addEventListener('click', () => {
+            stopAutoplay();
+            nextScene();
+        });
+
+        // Initialize autoplay on load
+        startAutoplay();
+    </script>
+</body>
+</html>
