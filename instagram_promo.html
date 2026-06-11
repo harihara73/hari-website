@@ -460,28 +460,13 @@
         const btnPrev = document.getElementById('btn-prev');
         const btnNext = document.getElementById('btn-next');
 
-        const scenes = document.querySelectorAll('.scene');
+        const scenes = Array.from(document.querySelectorAll('.scene'));
         let currentSceneIdx = 0;
-        let isPlaying = true;
+        let isPlaying = false;
         let intervalId = null;
-        const slideDuration = 4500; // Time in milliseconds per scene
+        const slideDuration = 4500; // milliseconds
 
-        // Layout Toggles
-        btnSquare.addEventListener('click', () => {
-            canvas.className = 'promo-canvas mode-square';
-            btnSquare.classList.add('btn-active');
-            btnReels.classList.remove('btn-active');
-            adjustScaling();
-        });
-
-        btnReels.addEventListener('click', () => {
-            canvas.className = 'promo-canvas mode-reels';
-            btnReels.classList.add('btn-active');
-            btnSquare.classList.remove('btn-active');
-            adjustScaling();
-        });
-
-        // Auto Scaling to fit preview window
+        // Layout Scaling
         function adjustScaling() {
             const viewportH = window.innerHeight - 200;
             const canvasH = canvas.offsetHeight;
@@ -489,46 +474,71 @@
             scaleWrapper.style.transform = `scale(${scale})`;
         }
 
-        window.addEventListener('resize', adjustScaling);
+        btnSquare.addEventListener('click', () => {
+            canvas.className = 'promo-canvas mode-square';
+            btnSquare.classList.add('btn-active');
+            btnReels.classList.remove('btn-active');
+            setTimeout(adjustScaling, 50);
+        });
+
+        btnReels.addEventListener('click', () => {
+            canvas.className = 'promo-canvas mode-reels';
+            btnReels.classList.add('btn-active');
+            btnSquare.classList.remove('btn-active');
+            setTimeout(adjustScaling, 50);
+        });
+
+        window.addEventListener('resize', adjustScaling, { passive: true });
         setTimeout(adjustScaling, 200);
 
-        // Slideshow controls
+        // Slide Transitions
         function showScene(idx) {
-            scenes.forEach(s => s.classList.remove('active'));
-            // Small timeout to allow transition reset
-            setTimeout(() => {
-                scenes[idx].classList.add('active');
-            }, 50);
+            // Instantly clear active states
+            scenes.forEach(s => {
+                s.classList.remove('active');
+            });
+            
+            // Set index
+            currentSceneIdx = idx;
+            
+            // Trigger transition on next frame
+            requestAnimationFrame(() => {
+                scenes[currentSceneIdx].classList.add('active');
+            });
         }
 
         function nextScene() {
-            currentSceneIdx = (currentSceneIdx + 1) % scenes.length;
-            showScene(currentSceneIdx);
+            const nextIdx = (currentSceneIdx + 1) % scenes.length;
+            showScene(nextIdx);
         }
 
         function prevScene() {
-            currentSceneIdx = (currentSceneIdx - 1 + scenes.length) % scenes.length;
-            showScene(currentSceneIdx);
+            const prevIdx = (currentSceneIdx - 1 + scenes.length) % scenes.length;
+            showScene(prevIdx);
         }
 
         function startAutoplay() {
-            if (intervalId) clearInterval(intervalId);
+            if (isPlaying) return;
             isPlaying = true;
             btnPlay.classList.add('btn-active');
             btnPause.classList.remove('btn-active');
+            
+            if (intervalId) clearInterval(intervalId);
             intervalId = setInterval(nextScene, slideDuration);
         }
 
         function stopAutoplay() {
             isPlaying = false;
+            btnPlay.classList.remove('btn-active');
+            btnPause.classList.add('btn-active');
+            
             if (intervalId) {
                 clearInterval(intervalId);
                 intervalId = null;
             }
-            btnPlay.classList.remove('btn-active');
-            btnPause.classList.add('btn-active');
         }
 
+        // Event Listeners
         btnPlay.addEventListener('click', startAutoplay);
         btnPause.addEventListener('click', stopAutoplay);
         btnPrev.addEventListener('click', () => {
@@ -540,7 +550,8 @@
             nextScene();
         });
 
-        // Initialize autoplay on load
+        // Initialize slideshow
+        showScene(0);
         startAutoplay();
     </script>
 </body>
